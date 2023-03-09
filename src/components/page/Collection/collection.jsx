@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import CardList from '../../CardList/CardList';
+import CardList from '../../cardList/CardList';
 import { Paginator } from '../../Paginator/paginator';
-import api from '../../Utilites/api';
+import api from '../../utilites/api';
 
 
 export const CollectionPage = ({headlyPostLike})=>{
