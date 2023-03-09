@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import api from '../Utilites/api';
+import api from '../utilites/api';
 import s from './index.module.css';
 
 export const Form = (props) => {

@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import Spinner from "../../Spinner/spinner";
-import api from "../../Utilites/api";
-import { Post } from "../../Post/Post";
+import Spinner from "../../spinner/Spinner";
+import api from "../../utilites/api";
+import { Post } from "../../post/Post";
 import { useParams } from "react-router-dom";
 import { useContext } from 'react';
 import { UserContext } from '../../../context/userContext';

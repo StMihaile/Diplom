@@ -1,6 +1,6 @@
 import React from "react";
 import './index.css';
-import logo from '../Assets/logo5.svg';
+import logo from '../assets/logo5.svg';
 import telegram from "./img/telegram.svg";
 import viber from "./img/viber.svg";
 import vk from "./img/vk.svg";
