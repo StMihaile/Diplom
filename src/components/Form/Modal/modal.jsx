@@ -8,8 +8,8 @@ export const Modal = ({ children, activeModal, setActiveModal }) => {
  const [active, setActive] = useState(false);
 
 useEffect(()=>{
-   setActive(true);
-   setActiveModal(false);
+   //setActive(true);
+  // setActiveModal(false);
 },[]);
 
   return (

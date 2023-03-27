@@ -1,4 +1,3 @@
-import { Register } from "../Register/register";
 
 const onResponse = (res)=>{ 
     return res.ok ? res.json(): Promise.reject(`ошибка : ${res.status}`);
