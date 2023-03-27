@@ -16,6 +16,7 @@ export const Login = () => {
       handleSubmit,
       formState: { errors },
     } = useForm({ mode: 'onChange' });
+    const navigate = useNavigate();
   
     const emailRegister = register('email', {
       required: {
@@ -39,11 +40,16 @@ export const Login = () => {
     });
   
     const sendData = async(data) => {
+      try {
        const result = await authApi.login(data);
        console.log (result);
-       localStorage.setItem('token');
+       localStorage.setItem('token', result?.token);
+              navigate('/');
+       } catch (error) {
+        alert ('Не правильный логин или пароль')
+       }
     };
-    const navigate = useNavigate();
+    
     return (
       <>
         <Form handleFormSubmit={handleSubmit(sendData)} title='Вход'>
