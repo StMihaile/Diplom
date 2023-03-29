@@ -8,8 +8,6 @@ import { PostPage } from '../page/PostPage/postPage';
 import {Route, Routes, useLocation } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
 import { CardContext } from '../../context/cardContext';
-import { Form } from '../Form/form';
-import { RegistrationForm } from '../Form/registrationForm';
 import { Modal } from '../Form/Modal/modal';
 import { SubHeader } from '../SubHeader/subHeader';
 import { FormPost } from '../FormPost/formPost';
@@ -186,7 +184,7 @@ const initialPath = location.state?.location;
             > </Route>
         <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
 
-        <Route path='formPost' element = {<FormPost addPost={addPost} />}></Route>
+        */<Route path='formPost' element = {<FormPost addPost={addPost} />}></Route>
 
        
        
@@ -198,16 +196,7 @@ const initialPath = location.state?.location;
             > </Route>
 
        
-       //<div>
-       // {contacts.length && contacts.map((el) => (
-       // <div>
-       // <p>{el.lastName}</p>
-       //<p>{el.name}</p>
-       //<p>{el.phoneNumber}</p>
-
-       // </div> 
-       //))}
-       //</div>         
+         
    
         <Route path='/FormPost' element = {
            <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
@@ -232,7 +221,16 @@ const initialPath = location.state?.location;
           </Route>
         </Routes>
        )}    
-       
+       <div>
+        {contacts.length && contacts.map((el) => (
+        <div>
+        <p>{el.lastName}</p>
+       <p>{el.name}</p>
+       <p>{el.phoneNumber}</p>
+
+        </div> 
+       ))}
+       </div>       
   <Footer />
 
      </div>
