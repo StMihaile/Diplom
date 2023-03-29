@@ -48,7 +48,7 @@ function App() {
     const debounceSearchQuery = useDebounce(searchQuery, 2500);
 
     const handleRequest = () => {
-     
+
       api
         .search(searchQuery)
         .then((res) => setCards(res))
@@ -58,7 +58,9 @@ function App() {
    useEffect(() => {
     handleRequest();
     console.log('INPUT', searchQuery);
-   }, [debounceSearchQuery]);
+
+    }, [debounceSearchQuery]);
+
   
     const handleFormSubmit = (e) => {
       e.preventDefault();
@@ -136,16 +138,12 @@ const addPost = (dataPostForm)=>{
          <div className="App">
    
 
-        
-        <Header changeInput={handleInputChange}/>
-        <SearchInfo searchCount={cards.length} searchText={searchQuery} />  
+
            
+         <Header changeInput={handleInputChange}/> 
+         <SearchInfo searchCount={cards.length} searchText={searchQuery} />
            <SubHeader setActiveModal={setActiveModal} ></SubHeader>
 
-         
-         
-
-   
            <Routes>
            <Route path ='/' element = {
            <CollectionPage  cards={cards} currentUser={currentUser} headlyPostLike ={headlyPostLike} />
