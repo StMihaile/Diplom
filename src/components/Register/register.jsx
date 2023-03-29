@@ -1,4 +1,3 @@
-
 import { useForm } from 'react-hook-form';
 import { Form } from "../Form/form"
 import '../Login/index.css'
@@ -38,10 +37,15 @@ export const Register = () => {
         message: VALIDATE_CONFIG.password,
       },
     });
-  
+    
     const sendData = async(data) => {
-      console.log({ data });
-      await register({...data, group: 'group-9'});
+    try {
+      const result = await authApi.register({...data, group: 'group-9'});
+      console.log(result);
+    } catch (error) {
+      alert ('Что то пошло не так')
+    } 
+    
     };
     const navigate = useNavigate();
     return (

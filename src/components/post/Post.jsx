@@ -3,16 +3,14 @@ import { useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { Link, useNavigate } from 'react-router-dom';
 import s from '../post/index.module.css'
-import Search from '../Search/search';
-import { Route, Routes } from 'react-router-dom';
 import {ReactComponent as Heart} from '../assets/heart3.svg'
 import {UserContext} from '../../context/userContext'
-import api from '../Utilites/api';
+import api from '../utilites/api';
 import {useForm} from 'react-hook-form';
 import { Form } from '../Form/form';
 import { useState } from 'react';
 import { VALIDATE_CONFIG } from '../../constants/constants';
-import { ReactComponent as Basket } from '../Assets/basket.svg';
+import { ReactComponent as Basket } from '../assets/basket.svg';
 
 export const Post = ({
    image,
