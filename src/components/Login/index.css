@@ -1,0 +1,51 @@
+
+.auth__input {
+    padding: 0.9rem 1rem;
+    width: 100%;
+    height: 3rem;
+    background-color: rgb(213, 243, 245);
+    border: 1px solid black;
+    border-radius: 0.8rem;
+}
+.auth__controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 90%;
+}
+
+.textarea {
+    height: auto;
+    min-height: 100px;
+    resize: none;
+}
+.auth__input:focus {
+    outline: none;
+    border-color: blue;
+    caret-color: blue;
+}
+.auth__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.auth__info {
+    width: 95%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #0e0e0e;
+    margin: 0;
+  }
+  .auth__error {
+    margin: 0;
+    color: red;
+    font-size: 10px;
+  }
+  .auth__link {
+    cursor: pointer;
+  }
+  .auth__link:hover {
+    text-decoration: underline;
+  }

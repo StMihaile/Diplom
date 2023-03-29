@@ -7,7 +7,7 @@ const handleSubmit = (onSubmit) => {
 
 export const RegistrationForm = () => {
   
-  const { register, handleSubmit, formState: {errors} } = useForm({mode: 'onSubmit'});
+  const { register, handleSubmit, formState: {errors} } = useForm({mode: 'onChange'});
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -25,11 +25,10 @@ export const RegistrationForm = () => {
           required: "Обязательное поле",
           maxLength: {
             value: 10,
-            message: 'слишком длинное имя'
+            message: 'Максимум 10 символов'
           },
         })}
-        // value={contactInfo.title}
-        // onChange={handleChange}
+    
       />
       <div>
         {errors?.name && <p style={{color: 'red'}}>{errors?.name?.message}</p>}
@@ -40,17 +39,13 @@ export const RegistrationForm = () => {
         placeholder='Password'
         {...register('password', {
           required: "Обязательное поле",
-          // minLength: {
-          //   value: 5,
-          //   message: 'слишком короткий пароль'
-          // }
+         
           pattern: {
-            value:  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-            message: `Пароль должен содержать минимум 11 символов, одну букву латинского алфавита и одну цифру`
+            value:  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+            message: `Пароль должен содержать минимум 6 символов, одну букву латинского алфавита и одну цифру`
           }
         })}
-        // value={contactInfo.lastName}
-        // onChange={handleChange}
+        
       />
        <div>
         {errors?.password && <p style={{color: 'red'}}>{errors?.password?.message}</p>}
@@ -60,8 +55,7 @@ export const RegistrationForm = () => {
         type='number'
         placeholder='Номер телефона'
         {...register('phoneNumber')}
-        // value={contactInfo.phoneNumber}
-        // onChange={handleChange}
+        
       />
       <button className={s.button}> Sign Up</button>
     </form>

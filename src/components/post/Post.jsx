@@ -2,10 +2,10 @@ import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { Link, useNavigate } from 'react-router-dom';
-import s from '../Post/index.module.css'
+import s from '../post/index.module.css'
 import Search from '../Search/search';
 import { Route, Routes } from 'react-router-dom';
-import {ReactComponent as Heart} from '../Assets/heart3.svg'
+import {ReactComponent as Heart} from '../assets/heart3.svg'
 import {UserContext} from '../../context/userContext'
 import api from '../Utilites/api';
 import {useForm} from 'react-hook-form';

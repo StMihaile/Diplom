@@ -1,0 +1,24 @@
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 25px;
+
+    width: 350px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color:black;
+    cursor: pointer;
+}
+.blue{
+    border: 1px solid blue;
+    background-color:  rgb(213, 243, 245);
+    
+
+}
+.white {
+    border: 1px solid blue;
+    background-color: white;
+}

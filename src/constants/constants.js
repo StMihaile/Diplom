@@ -1,3 +1,4 @@
+
 export const VALIDATE_CONFIG = {
     requiredMessage: 'Обязательное поле',
     email: 'Невалидный формат email',
