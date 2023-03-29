@@ -48,10 +48,6 @@ const handleSubmit = (onSubmit) => {
         console.log({data});
     }
 
-  
-
-
-
 
 
     return(

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 import {UserContext} from '../../context/userContext';
 
+
 const Card=({title,
     image,
     likes,
@@ -65,14 +66,7 @@ return(
    <div className="card_counter_comment">
             <span>{commentsCount}</span>
         </div>
-    <div className="card_rating">
-        
-        <img src={star} alt="1 star" className="card_star_ikon"/>
-        <img src={star} alt="2 star" className="card_star_ikon" />
-        <img src={star} alt="3 star" className="card_star_ikon"/>
-        <img src={star} alt="4 star" className="card_star_ikon"/>
-        <img src={star} alt="5 star" className="card_star_ikon"/>
-    </div>
+    
 
     </div>
 
