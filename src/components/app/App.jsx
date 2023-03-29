@@ -15,6 +15,7 @@ import { SubHeader } from '../SubHeader/subHeader';
 import { FormPost } from '../FormPost/formPost';
 import  SearchInfo from '../SearchInfo/searchInfo.jsx';
 import Search from '../Search/search';
+import { EditPost } from '../EditPost/editPost';
 
 
 
@@ -90,13 +91,34 @@ function headlyPostLike(posts){
  api.changeLikePosts(posts._id, liked).then((newCard)=>{ // посылаем апи-запрос серверу с айди 
   //пользователя и информацией залайкан пост или нет. получаем новую карточку от сервера
   const newPost = cards.map((cardState)=>{
-    console.log('карточка из стейта', cardState);
-    console.log('карточка из сервера', newCard);
+    // console.log('карточка из стейта', cardState);
+    // console.log('карточка из сервера', newCard);
     return cardState._id === newCard._id ? newCard : cardState; // берем новую карточку и заменяем ей старую
   })
   setCards(newPost)
  })
 }
+
+
+// function deletePost(posts){
+//   const createDelete=posts._id.some(id=> id===currentUser?._id);
+//   console.log(createDelete);
+//   api.deletePostFormUser(posts._id).then((newCard)=>{
+//     const newPost = cards.map((cardState)=>{
+//       // console.log('карточка из стейта', cardState);
+//       // console.log('карточка из сервера', newCard);
+//       return cardState._id === newCard._id ? newCard : cardState; // берем новую карточку и заменяем ей старую
+//     })
+//     setCards(newPost)
+//   })
+  
+//   }
+
+
+
+
+
+
 const addContact = (contact) => {
   setContacts([...contacts, contact])
 };
@@ -132,6 +154,15 @@ const addPost = (dataPostForm)=>{
         <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
         <Route path='form' element = {<Form addContact = {addContact} />}></Route>
         <Route path='formPost' element = {<FormPost addPost={addPost} />}></Route>
+       
+       
+        <Route path = '/edit-post/:postId' element = {
+           <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+          <EditPost/>
+         </Modal>
+            }
+            > </Route>
+
        </Routes>
        <div>
        {contacts.length && contacts.map((el) => (
@@ -153,6 +184,8 @@ const addPost = (dataPostForm)=>{
                 <FormPost addPost={addPost} setActiveModal={setActiveModal} />
               </div>
             </Modal>
+
+           
 
        <Footer />
      </div>

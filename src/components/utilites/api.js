@@ -47,6 +47,14 @@ getPostsById(idPost) {
     }).then(onResponse)
 }
 
+editPostById(idPost,body) {
+    return fetch(`${this._baseUrl}/v2/group-9/posts/${idPost}`, {
+        headers: this._headers,
+        method: "PATCH",
+        body: JSON.stringify(body)
+    }).then(onResponse)
+}
+
 addPostForm(data) {
     return fetch(`${this._baseUrl}/v2/group-9/posts`, 
     {headers: this._headers,
@@ -56,6 +64,41 @@ addPostForm(data) {
          JSON.stringify(data), // {image:'', title:'',text:''}
     }).then(onResponse);
 }
+
+deletePostFormUser(idPost){
+    return fetch(`${this._baseUrl}/v2/group-9/posts/${idPost}`, 
+    {headers: this._headers,
+        method: 'DELETE',
+    }).then(onResponse);
+}
+
+getUserById(idPost){
+    return fetch(`${this._baseUrl}/v2/group-9/users/${idPost}`, 
+    {headers: this._headers,
+        
+    }).then(onResponse);
+}
+getUsers(){
+    return fetch(`${this._baseUrl}/v2/group-9/users`, 
+    {headers: this._headers,
+        
+    }).then(onResponse);
+}
+
+addComments(postId,body){
+    return fetch(`${this._baseUrl}/v2/group-9/posts/comments/${postId}`, {
+      headers: this._headers,
+      method: 'POST',
+      body: JSON.stringify(body)
+    }).then(onResponse);
+  }
+  deleteComments(postId, reviewId){
+    return fetch(`${this._baseUrl}/v2/group-9/posts/comments/${postId}/${reviewId}`, {
+      headers: this._headers,
+      method: 'DELETE',
+    }).then(onResponse);
+  }
+
 
 }
 

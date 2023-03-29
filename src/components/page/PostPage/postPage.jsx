@@ -30,6 +30,25 @@ api // делаем запрос
 .finally(()=>setIsloading(false));//это позволяет отключить спиннер, после любого ответа сервера на наш запрос (ошибка. не ошибка - не важно)
  
 },[postId]);
+const onSendComments = async (data) => {
+   try {
+     const result = await api.addComments(posts._id, data);
+   //   openNotification('success', 'Success', 'Ваш отзыв успешно отправлен');
+     setPost({ ...result });
+   } catch (error) {
+   //   openNotification('error', 'Error', 'Не получилось отправить отзыв');
+   }
+ };
+
+ const deleteComments = async (id) => {
+   try {
+     const result = await api.deleteComments(posts._id, id);
+     setPost({ ...result });
+   //   openNotification('success', 'Success', 'Ваш отзыв успешно удален');
+   } catch (error) {
+   //   openNotification('error', 'Error', 'Не получилось удалить отзыв');
+   }
+ };
 
 
 
@@ -49,7 +68,11 @@ api // делаем запрос
           {
             isloading? (<Spinner/>) : (<Post {...posts}
                 currentUser ={currentUser} 
-                onPostsLike={onPostsLike}/>)
+                onPostsLike={onPostsLike}
+                setPosts = {setPost}
+                deleteComments={deleteComments}
+                onSendComments={onSendComments}
+                />)
           }
           
          </div>

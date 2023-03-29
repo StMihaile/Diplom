@@ -48,10 +48,6 @@ const handleSubmit = (onSubmit) => {
         console.log({data});
     }
 
-  
-
-
-
 
 
     return(
@@ -109,7 +105,7 @@ const handleSubmit = (onSubmit) => {
             </textarea>
             <div className=' btn_close_create'>
                 <button type='button' className='btn_c' onClick={()=>setActiveModal(false)  }> ОТМЕНА </button>
-            <button type='submit' className='btn_c' onClick={hendlyFormSubmit}> СОЗДАТЬ</button>
+            <button type='submit' className='btn_c' onClick={()=>setActiveModal(false)}> СОЗДАТЬ</button>
             </div>
             
     </form>
