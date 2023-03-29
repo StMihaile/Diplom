@@ -14,6 +14,7 @@ import { Modal } from '../Form/Modal/modal';
 import { SubHeader } from '../SubHeader/subHeader';
 import { FormPost } from '../FormPost/formPost';
 import  SearchInfo from '../SearchInfo/searchInfo.jsx';
+import { EditPost } from '../EditPost/editPost';
 import { Login } from '../Login/login';
 import { Register } from '../Register/register';
 import { ResetPass } from '../ResetPass/resetPass';
@@ -96,13 +97,34 @@ function headlyPostLike(posts){
  api.changeLikePosts(posts._id, liked).then((newCard)=>{ // посылаем апи-запрос серверу с айди 
   //пользователя и информацией залайкан пост или нет. получаем новую карточку от сервера
   const newPost = cards.map((cardState)=>{
-    console.log('карточка из стейта', cardState);
-    console.log('карточка из сервера', newCard);
+    // console.log('карточка из стейта', cardState);
+    // console.log('карточка из сервера', newCard);
     return cardState._id === newCard._id ? newCard : cardState; // берем новую карточку и заменяем ей старую
   })
   setCards(newPost)
  })
 }
+
+
+// function deletePost(posts){
+//   const createDelete=posts._id.some(id=> id===currentUser?._id);
+//   console.log(createDelete);
+//   api.deletePostFormUser(posts._id).then((newCard)=>{
+//     const newPost = cards.map((cardState)=>{
+//       // console.log('карточка из стейта', cardState);
+//       // console.log('карточка из сервера', newCard);
+//       return cardState._id === newCard._id ? newCard : cardState; // берем новую карточку и заменяем ей старую
+//     })
+//     setCards(newPost)
+//   })
+  
+//   }
+
+
+
+
+
+
 const addContact = (contact) => {
   setContacts([...contacts, contact])
 };
@@ -166,10 +188,32 @@ const initialPath = location.state?.location;
 
         <Route path='formPost' element = {<FormPost addPost={addPost} />}></Route>
 
+       
+       
+        <Route path = '/edit-post/:postId' element = {
+           <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+          <EditPost/>
+         </Modal>
+            }
+            > </Route>
+
+       
+       //<div>
+       // {contacts.length && contacts.map((el) => (
+       // <div>
+       // <p>{el.lastName}</p>
+       //<p>{el.name}</p>
+       //<p>{el.phoneNumber}</p>
+
+       // </div> 
+       //))}
+       //</div>         
+   
         <Route path='/FormPost' element = {
            <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
-          
-          <FormPost addPost={addPost}/>
+           <div style={{ width: '600px', height: '100%' }}>
+           <FormPost addPost={addPost}/>
+           </div>
           
           </Modal>
             }>
@@ -190,6 +234,7 @@ const initialPath = location.state?.location;
        )}    
        
   <Footer />
+
      </div>
     </div>
   </div>
