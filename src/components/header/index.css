@@ -1,14 +1,19 @@
 .header {
-	width: 100%;
+	width: 99%;
 	height: 250px;
 	display: flex;
 	align-items: center;
     justify-content: space-between;
 
-	background-image: url("/public/steik-miaso-ovoshchi-ogon-gril-crop.jpeg");
+	background-color: black;
 	background-size: 100% 100%;
-    padding: 40px 0;
-		
+	border: 2px solid #c143e1; 
+box-shadow: 0 0 15px #8d14ab;
+border-radius: 10px;
+
+	
+	
+    
 }
 .logo {
 	width: 230px;
@@ -18,13 +23,23 @@
 	padding-left: 30px;
 }
 
-.logotyp{
-	width: 250px;
-	height: 250px;
-
-}
-
 .btn_login{
 
 	padding-right: 30px;
+	width: 90px;
+	height: 40px;
+	background-color: yellow;
+	font-family: sans-serif;
+	font-size: 25px;
+	color: rgb(10, 0, 0);
+    border-radius: 2mm;
+    cursor: pointer;
+	
 }
+.btn_login:hover{
+
+	background-color: rgb(140, 31, 184);
+	color: rgb(248, 248, 248);
+		transition: All 0.5s ease;
+	}
+	

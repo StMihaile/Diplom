@@ -50,9 +50,8 @@ export function Footer(params) {
 
         <div className="bottom"> 
       
-        <a className="logo_futer" href="/" title="Логотип">
+        <a className="logo_footer" href="/" title="Логотип">
              <img src={logo} alt="Логотоп" className="logo"/>
-             <h1 className="btn_futer">Кухня выходного дня</h1>
             </a>
   
         </div>

@@ -9,20 +9,23 @@ export function Header(props, {children, setActiveModal}) {
    
   return(
     <header className="header">
-            <a href="/" title="Логотип" className='logotyp'>
+   
+
+            <a href="/" title="Логотип">
              <img src={logo} alt="Логотоп" className="logo"/>
             </a>
             {children}
         <Search  onInput = {props.changeInput}/>
-     <div className='btn_login'>
+     <div >
           <Link
           to={'/login'}
           style = {{ cursor: 'pointer', position: 'relative'}}
           onClick = {()=> setActiveModal(true)}
           state = {{backgroundLocation: location, initialPath: location.pathname}}
-          ><button>Войти</button></Link>
-      </div>
-       
+          ><button className='btn_login'>Войти</button></Link>
+     
+      </div >
+
     </header>
   )
 
