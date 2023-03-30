@@ -1,3 +1,4 @@
+
 import { useForm } from 'react-hook-form';
 import { Form } from "../Form/form"
 import '../Login/index.css'
@@ -88,4 +89,5 @@ export const Register = () => {
         </Form>
       </>
     );
+
   };

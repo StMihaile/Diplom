@@ -12,7 +12,7 @@ export function SubHeader({children, setActiveModal}) {
        
       
         
-         <button className="subheader_btn" onClick={()=> navigate('/formPost')}> ПОДЕЛИСЬ СВОИМ РЕЦЕПТОМ </button>
+         <button className="subheader_btn" onClick={()=> navigate('/formPost')}> ПОДЕЛИСЬ СВОИМ ПОСТОМ </button>
         
     </header>
   )
