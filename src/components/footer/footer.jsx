@@ -1,6 +1,6 @@
 import React from "react";
 import './index.css';
-import logo from '../assets/logoH5.svg';
+import logo from '../assets/logo8.svg';
 import telegram from "./img/telegram.svg";
 import viber from "./img/viber.svg";
 import vk from "./img/vk.svg";
@@ -50,9 +50,9 @@ export function Footer(params) {
 
         <div className="bottom"> 
       
-        <a href="/" title="Логотип">
+        <a className="logo_futer" href="/" title="Логотип">
              <img src={logo} alt="Логотоп" className="logo"/>
-             <h1>Кухня выходного дня</h1>
+             <h1 className="btn_futer">Кухня выходного дня</h1>
             </a>
   
         </div>
