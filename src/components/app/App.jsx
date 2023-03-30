@@ -184,7 +184,7 @@ const initialPath = location.state?.location;
             > </Route>
         <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
 
-        <Route path='formPost' element = {<FormPost addPost={addPost} />}></Route>
+        */<Route path='formPost' element = {<FormPost addPost={addPost} />}></Route>
 
        
        
@@ -221,7 +221,16 @@ const initialPath = location.state?.location;
           </Route>
         </Routes>
        )}    
-       
+       <div>
+        {contacts.length && contacts.map((el) => (
+        <div>
+        <p>{el.lastName}</p>
+       <p>{el.name}</p>
+       <p>{el.phoneNumber}</p>
+
+        </div> 
+       ))}
+       </div>       
   <Footer />
 
      </div>
