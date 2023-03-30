@@ -10,12 +10,13 @@ import {
 } from '../../constants/constants';
 import authApi from '../utilites/authApi';
 
-export const Register = () => {
+export const Login = () => {
     const {
       register,
       handleSubmit,
       formState: { errors },
     } = useForm({ mode: 'onChange' });
+    const navigate = useNavigate();
   
     const emailRegister = register('email', {
       required: {
@@ -37,20 +38,21 @@ export const Register = () => {
         message: VALIDATE_CONFIG.password,
       },
     });
-    
+  
     const sendData = async(data) => {
-    try {
-      const result = await authApi.register({...data, group: 'group-9'});
-      console.log(result);
-    } catch (error) {
-      alert ('Что то пошло не так')
-    } 
-    
+      try {
+       const result = await authApi.login(data);
+       console.log (result);
+       localStorage.setItem('token', result?.token);
+              navigate('/');
+       } catch (error) {
+        alert ('Не правильный логин или пароль')
+       }
     };
-    const navigate = useNavigate();
+    
     return (
       <>
-        <Form handleFormSubmit={handleSubmit(sendData)} title='Регистрация'>
+        <Form handleFormSubmit={handleSubmit(sendData)} title='Вход'>
           <div className='auth__controls'>
             <input
               {...emailRegister}
@@ -74,15 +76,15 @@ export const Register = () => {
               <p className='auth__error'>{errors?.password?.message}</p>
             )}
           </div>
-          <p className='auth__info auth__link' onClick={() => navigate('/reset-pass')}>
-            Регистрируясь на сайте, вы соглашаетесь с нашими правилами и Политикой конфиденциальности.
+          <p className='auth__info auth__link' onClick={() => navigate('/resetPass')}>
+            Восстановить пароль
           </p>
           <div className='auth__actions'>
             <BaseButton type='submit' color={'blue'}>
-              Зарегистрироваться
-            </BaseButton>
-            <BaseButton type='button' color={'white'} onClick={() => navigate('/login')}>
               Войти
+            </BaseButton>
+            <BaseButton type='button' color={'white'} onClick={() => navigate('/register')}>
+              Регистрация
             </BaseButton>
           </div>
         </Form>

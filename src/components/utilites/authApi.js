@@ -54,3 +54,4 @@ const config = {
 
 const authApi = new Api(config); // создаем экземпляр класса и прокидываем конфиг, указанный в документации от "бэка"
 export default authApi; // экспортируем наш экземпляр
+

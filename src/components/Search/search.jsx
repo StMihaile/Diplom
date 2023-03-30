@@ -20,10 +20,7 @@ function Search({ onSubmit: propsOnSubmit, onInput }) {
             placeholder='Поиск'
             onInput={handleInput}
           />
-          <button className='search__btn'>
-            <SearchIcon />
-            {false && <CloseIcon />}
-          </button>
+
         </form>
       ) : (
         <></>

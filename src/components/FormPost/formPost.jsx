@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react'
-import api from '../Utilites/api';
+import api from '../utilites/api';
 import './index.css'
 import { useContext } from 'react';
 import { CardContext } from '../../context/cardContext';

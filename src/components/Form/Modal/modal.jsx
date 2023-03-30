@@ -5,10 +5,10 @@ import './index.css'
 
 
 export const Modal = ({ children, activeModal, setActiveModal }) => {
-// const [active, setActive] = useState(false);
+ const [active, setActive] = useState(false);
 
 useEffect(()=>{
-  // setActive(true);
+   //setActive(true);
   // setActiveModal(false);
 },[]);
 
