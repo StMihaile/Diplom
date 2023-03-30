@@ -19,15 +19,15 @@ viewBox="0 0 2480 3507.43"
  <g id="Слой_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
   <g clip-path="url(#id0)">
-   <image x="2909.8" y="-1493.82" width="2608" height="2608" xlink:href="logoH5_Images\logoH5_ImgID1.jpg"/>
+   <image x="2909.8" y="-1493.82" width="2608" height="2608" xlink:href="logoH4_Images\logoH4_ImgID1.jpg"/>
   </g>
-  <g id="_2382841527200">
+  <g id="_2382839783072">
    <line fill="none" stroke="black" stroke-width="2.36" stroke-miterlimit="22.9256" x1="4213.8" y1="-1493.82" x2="4213.8" y2= "-1493.82" />
   </g>
-  <g id="_2382841527488">
+  <g id="_2382839783408">
    <line fill="none" stroke="black" stroke-width="2.36" stroke-miterlimit="22.9256" x1="4213.8" y1="-1493.82" x2="4213.8" y2= "-1493.82" />
   </g>
-  <g id="_2382841526192">
+  <g id="_2382839784032">
    <polyline fill="none" stroke="black" stroke-width="2.36" stroke-miterlimit="22.9256" points="2960.65,2896.93 2960.65,2922.27 3127.88,2922.27 "/>
   </g>
   <ellipse fill="yellow" stroke="black" stroke-width="2.36" stroke-miterlimit="22.9256" cx="3449.83" cy="3628.94" rx="555.97" ry="580.38"/>
@@ -699,7 +699,7 @@ viewBox="0 0 2480 3507.43"
    </g>
    <path id="_663" fill="none" stroke="black" stroke-width="2.36" stroke-miterlimit="22.9256" d="M4089.96 -791.02c18.92,-20.01 26,-42.52 21.24,-67.54 26.77,24.28 36.51,54.38 29.22,90.3 32.85,-32.89 40.43,-76.38 22.72,-130.47 31.82,45.35 75.56,58.71 48.93,130.78 -5.15,13.95 -26.3,36.4 2.21,66.85 123.35,-34.25 143.19,-118.94 59.52,-254.09 -0.15,20.52 -8.8,35.01 -25.95,43.49 12.65,-59.26 -0.07,-98.69 -38.15,-118.27 8.42,36.36 1.81,56.45 -19.84,60.28 -3.1,-64.15 -31.84,-106.37 -86.22,-126.67 33.06,64.3 22.42,129.82 -31.92,196.59 8.43,-29.79 -1.67,-54.33 -30.32,-73.61 6.73,16.33 12.11,33.07 -15.42,79.29 -56.41,94.7 -3.63,160.89 49.96,190.19 -8.01,-29.42 -3.34,-58.46 14.02,-87.12z"/>
   </g>
-  <g id="_2382841588544">
+  <g id="_2382839767328">
    <circle fill="white" stroke="white" stroke-width="4.17" stroke-miterlimit="22.9256" cx="1294.98" cy="1794.51" r="685.12"/>
    <circle fill="white" stroke="black" stroke-width="29.16" stroke-miterlimit="22.9256" cx="1287.87" cy="1781.69" r="566.89"/>
    <circle fill="white" stroke="#706F70" stroke-width="45.83" stroke-miterlimit="22.9256" cx="1287.21" cy="1782.02" r="532.33"/>

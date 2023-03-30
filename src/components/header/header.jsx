@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import logo from '../assets/logoH5.svg';
+import logo from '../assets/logoH40.svg';
 import Search from "../Search/search";
 import { Link, useLocation } from 'react-router-dom';
 
