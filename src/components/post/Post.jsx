@@ -171,7 +171,7 @@ initialPath: location.pathname
       <div className={s.comments__control}>
       <span className={s.comments__name}>КОММЕНТАРИИ</span> 
       {!showForm ? (
-      <button className={s.comments_btn} onClick={() => setShowForm(true)}> Добавить</button>) : (
+      <button className={s.comments_btn} onClick={() => setShowForm(true)}> Добавить комментарий</button>) : (
        <Form className={s.form}
               handleFormSubmit={handleSubmit(sendComments)}
               title='Написать комментарий'
