@@ -12,6 +12,7 @@ export function SubHeader({setShow}) {
     <header className="header_sub">
        
     <button className="subheader_btn" onClick={()=> setShow(true)}> ПОДЕЛИСЬ СВОИМ ПОСТОМ </button>
+
         
     </header>
   )
