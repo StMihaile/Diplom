@@ -16,6 +16,7 @@ import { EditPost } from '../EditPost/editPost';
 import { Login } from '../Login/login';
 import { Register } from '../Register/register';
 import { ResetPass } from '../ResetPass/resetPass';
+import { ModalPost } from '../Form/Modal/modalPost';
 
 
 
@@ -44,6 +45,7 @@ function App() {
     const [contacts, setContacts]=useState([]);
     const [activeModal, setActiveModal] = useState(true);
     const [dataPostForm, setDataPostForm] = useState([]);
+    const [show, setShow] = useState(false);
    
 
 
@@ -136,7 +138,7 @@ const initialPath = location.state?.location;
  
   return (
     <>
-    <CardContext.Provider value={{cards: cards, setActiveModal:setActiveModal}}>
+    <CardContext.Provider value={{cards: cards, setActiveModal:setActiveModal,setShow:setShow}}>
     <UserContext.Provider value={{currentUser:currentUser,  headlyPostLike: headlyPostLike }}>
       <div className='content_container'>
        <div className='content_cards'>
@@ -148,16 +150,16 @@ const initialPath = location.state?.location;
          <Header changeInput={handleInputChange} setActiveModal={setActiveModal}/> 
 
          <SearchInfo searchCount={cards.length} searchText={searchQuery} />
+           
 
-
-           <SubHeader setActiveModal={setActiveModal} ></SubHeader>
+           <SubHeader  setShow={setShow} ></SubHeader>
            
 
            <Routes location={backgroundLocation && {...backgroundLocation, path:initialPath || location}}>
             <Route path='/login' element = {
            <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
           
-          <Login/>
+             <Login/>
           
           </Modal>
             }>
@@ -184,7 +186,7 @@ const initialPath = location.state?.location;
             > </Route>
         <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
 
-        */<Route path='formPost' element = {<FormPost addPost={addPost} />}></Route>
+        {/* <Route path='formPost' element = {<FormPost addPost={addPost} />}></Route> */}
 
        
        
@@ -198,13 +200,13 @@ const initialPath = location.state?.location;
        
          
    
-        <Route path='/FormPost' element = {
-           <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
+        <Route path='/formPost' element = {
+           <ModalPost show={show} setShow={setShow}>
            <div style={{ width: '600px', height: '100%' }}>
            <FormPost addPost={addPost}/>
            </div>
           
-          </Modal>
+          </ModalPost>
             }>
           </Route>
        </Routes>
@@ -230,7 +232,17 @@ const initialPath = location.state?.location;
 
         </div> 
        ))}
-       </div>       
+       </div>   
+
+{/* <Modal activeModal={activeModalPost}setActiveModalPost={setActiveModalPost}>
+           <div style={{ width: '600px', height: '100%' }}>
+           <FormPost addPost={addPost}/>
+           </div>
+</Modal>  */}
+
+       
+          
+             
   <Footer />
 
      </div>

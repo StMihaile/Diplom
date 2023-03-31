@@ -16,7 +16,7 @@ export function Header(props, {children, setActiveModal}) {
             </a>
             {children}
         <Search  onInput = {props.changeInput}/>
-     <div >
+     <div className='btn_login_container' >
           <Link
           to={'/login'}
           style = {{ cursor: 'pointer', position: 'relative'}}
