@@ -16,6 +16,9 @@ import { EditPost } from '../EditPost/editPost';
 import { Login } from '../Login/login';
 import { Register } from '../Register/register';
 import { ResetPass } from '../ResetPass/resetPass';
+import { ModalPost } from '../Form/Modal/modalPost';
+import { Profile } from '../profile/profile';
+import { FaqPage } from '../page/faq/faq';
 
 
 
@@ -44,6 +47,7 @@ function App() {
     const [contacts, setContacts]=useState([]);
     const [activeModal, setActiveModal] = useState(true);
     const [dataPostForm, setDataPostForm] = useState([]);
+    const [show, setShow] = useState(false);
    
 
 
@@ -95,33 +99,12 @@ function headlyPostLike(posts){
  api.changeLikePosts(posts._id, liked).then((newCard)=>{ // посылаем апи-запрос серверу с айди 
   //пользователя и информацией залайкан пост или нет. получаем новую карточку от сервера
   const newPost = cards.map((cardState)=>{
-    // console.log('карточка из стейта', cardState);
-    // console.log('карточка из сервера', newCard);
+
     return cardState._id === newCard._id ? newCard : cardState; // берем новую карточку и заменяем ей старую
   })
   setCards(newPost)
  })
 }
-
-
-// function deletePost(posts){
-//   const createDelete=posts._id.some(id=> id===currentUser?._id);
-//   console.log(createDelete);
-//   api.deletePostFormUser(posts._id).then((newCard)=>{
-//     const newPost = cards.map((cardState)=>{
-//       // console.log('карточка из стейта', cardState);
-//       // console.log('карточка из сервера', newCard);
-//       return cardState._id === newCard._id ? newCard : cardState; // берем новую карточку и заменяем ей старую
-//     })
-//     setCards(newPost)
-//   })
-  
-//   }
-
-
-
-
-
 
 const addContact = (contact) => {
   setContacts([...contacts, contact])
@@ -136,7 +119,7 @@ const initialPath = location.state?.location;
  
   return (
     <>
-    <CardContext.Provider value={{cards: cards, setActiveModal:setActiveModal}}>
+    <CardContext.Provider value={{cards: cards, setActiveModal:setActiveModal,setShow:setShow}}>
     <UserContext.Provider value={{currentUser:currentUser,  headlyPostLike: headlyPostLike }}>
       <div className='content_container'>
        <div className='content_cards'>
@@ -148,16 +131,16 @@ const initialPath = location.state?.location;
          <Header changeInput={handleInputChange} setActiveModal={setActiveModal}/> 
 
          <SearchInfo searchCount={cards.length} searchText={searchQuery} />
+           
 
-
-           <SubHeader setActiveModal={setActiveModal} ></SubHeader>
+           <SubHeader  setShow={setShow} ></SubHeader>
            
 
            <Routes location={backgroundLocation && {...backgroundLocation, path:initialPath || location}}>
             <Route path='/login' element = {
            <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
           
-          <Login/>
+             <Login/>
           
           </Modal>
             }>
@@ -184,7 +167,7 @@ const initialPath = location.state?.location;
             > </Route>
         <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
 
-        */<Route path='formPost' element = {<FormPost addPost={addPost} />}></Route>
+        {/* <Route path='formPost' element = {<FormPost addPost={addPost} />}></Route> */}
 
        
        
@@ -198,30 +181,33 @@ const initialPath = location.state?.location;
        
          
    
-        <Route path='/FormPost' element = {
-           <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
+        <Route path='/formPost' element = {
+           <ModalPost show={show} setShow={setShow}>
            <div style={{ width: '600px', height: '100%' }}>
            <FormPost addPost={addPost}/>
            </div>
           
-          </Modal>
+          </ModalPost>
             }>
           </Route>
-       </Routes>
-
-       {backgroundLocation && (
-        <Routes>
-           <Route path='/login' element = {
+          <Route path='/profile' element = {
            <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
-          
-          <Login/>
-          
+           <Profile/>
+    
           </Modal>
             }>
           </Route>
-        </Routes>
-       )}    
+      
+           <Route path='/faq' element = {
+           <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
+            <div style={{ width: '800px', height: '100%', padding: '20px' }}>
           
+          <FaqPage/>
+          </div>
+          </Modal>
+            }>
+          </Route>
+       </Routes>         
   <Footer />
 
      </div>
