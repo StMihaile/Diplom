@@ -8,7 +8,7 @@ import api from "../utilites/api";
 import { BaseButton } from "../BaseButton/baseButton";
 import { Form } from "../Form/form";
 import { openNotification } from "../notification/notification";
-import "./index.scss";
+import "./index.css";
 export const Profile = () => {
   console.log("this is profile");
 
