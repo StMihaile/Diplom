@@ -5,7 +5,8 @@ const onResponse = (res)=>{
 class Api{ // задаем класс апи, делаем конструктор
 constructor ({baseUrl, headers}){
 this._headers = headers;
-this._baseUrl = baseUrl
+this._baseUrl = baseUrl;
+this._configFunc = configFunc;
 }
 getPostList(){  // делаем запрос на сервер на получение постов, согласно документации от "бэка"
     return fetch(`${this._baseUrl}/v2/group-9/posts`,{headers: this._headers}).then(onResponse).then((result) => {
@@ -30,6 +31,13 @@ getUserInfo(){  // делаем запрос на сервер на получе
         return result;
       });
 };
+setUserInfo(dataUser) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      ...this._configFunc(),
+      method: "PATCH",
+      body: JSON.stringify(dataUser),
+    }).then(onResponse);
+  }
 
 changeLikePosts(postId, isLiked) {
 
@@ -103,7 +111,16 @@ addComments(postId,body){
 }
 
 
+const configFunc = () => {
 
+    console.log('HELLO i was called');
+    return {
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+  };
 
 const config = {
     baseUrl : ' https://api.react-learning.ru',
