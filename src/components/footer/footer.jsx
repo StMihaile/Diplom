@@ -50,17 +50,7 @@ export function Footer(params) {
             <div className="faq"> 
               <h2> Часто задаваемые</h2>
               <h2> вопросы</h2>
-              <Routes>
-           <Route path='/faq' element = {
-           <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
-            <div style={{ width: '800px', height: '100%', padding: '20px' }}>
-          
-          <FaqPage/>
-          </div>
-          </Modal>
-            }>
-          </Route>
-        </Routes>
+              
         <div >
           <Link
           to={'/faq'}
