@@ -53,7 +53,7 @@ export function Footer(params) {
               <Routes>
            <Route path='/faq' element = {
            <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
-            <div style={{ width: '600px', height: '100%' }}>
+            <div style={{ width: '800px', height: '100%', padding: '20px' }}>
           
           <FaqPage/>
           </div>
