@@ -36,6 +36,8 @@ export const ResetPass = ({ setAuthentificated }) => {
       message: VALIDATE_CONFIG.email,
     },
   })
+ 
+ 
   console.log(tokenResp)
   const sendData = async (formData) => {
     if (tokenResp) {
