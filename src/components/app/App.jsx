@@ -45,7 +45,7 @@ function App() {
     const [contacts, setContacts]=useState([]);
     const [activeModal, setActiveModal] = useState(true);
     const [dataPostForm, setDataPostForm] = useState([]);
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
    
 
 
@@ -80,7 +80,7 @@ function App() {
  useEffect(()=>{
    Promise.all([api.getPostList(),api.getUserInfo() ]).then(([dataPosts, dataUser])=>{ // промис.олл - не пропустит компиляцию, пока не выполнятся условия
      setCards(dataPosts);
-     console.log(dataPosts);
+    //  console.log(dataPosts);
      setCurrentUser(dataUser);
    });
  },[]);
@@ -93,7 +93,7 @@ function App() {
 
 function headlyPostLike(posts){
  const liked = posts.likes.some(id=> id=== currentUser?._id); //проверяем , залайкан ли этот пост этим пользователем
- console.log(liked);
+//  console.log(liked);
  api.changeLikePosts(posts._id, liked).then((newCard)=>{ // посылаем апи-запрос серверу с айди 
   //пользователя и информацией залайкан пост или нет. получаем новую карточку от сервера
   const newPost = cards.map((cardState)=>{
@@ -130,7 +130,7 @@ const addContact = (contact) => {
 };
 const addPost = (dataPostForm)=>{
   setDataPostForm([...cards, dataPostForm])
-  console.log();
+  // console.log();
 }
 const location = useLocation();
 const backgroundLocation = location.state?.backgroundLocation;
@@ -152,7 +152,7 @@ const initialPath = location.state?.location;
          <SearchInfo searchCount={cards.length} searchText={searchQuery} />
            
 
-           <SubHeader  setShow={setShow} ></SubHeader>
+           <SubHeader  show={show} setShow={setShow} ></SubHeader>
            
 
            <Routes location={backgroundLocation && {...backgroundLocation, path:initialPath || location}}>
@@ -202,9 +202,11 @@ const initialPath = location.state?.location;
    
         <Route path='/formPost' element = {
            <ModalPost show={show} setShow={setShow}>
+           
+          
            <div style={{ width: '600px', height: '100%' }}>
-           <FormPost addPost={addPost}/>
-           </div>
+                <FormPost addPost={addPost}  />
+              </div>
           
           </ModalPost>
             }>

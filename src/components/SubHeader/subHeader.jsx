@@ -6,12 +6,12 @@ import { Link,useLocation } from "react-router-dom";
 
 
 export function SubHeader({setShow}) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // const location = useLocation()
   return(
     <header className="header_sub">
        
-    <button className="subheader_btn" onClick={()=> setShow(true)}> ПОДЕЛИСЬ СВОИМ ПОСТОМ </button>
+    <button className="subheader_btn"  onClick={()=>navigate("/formPost")}> ПОДЕЛИСЬ СВОИМ ПОСТОМ </button>
         
     </header>
   )

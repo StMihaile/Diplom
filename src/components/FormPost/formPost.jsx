@@ -6,6 +6,8 @@ import { useContext } from 'react';
 import { CardContext } from '../../context/cardContext';
 
 import { useForm } from 'react-hook-form';
+import { BaseButton } from '../BaseButton/baseButton';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -25,10 +27,13 @@ export const FormPost = ({addPost, setShow})=>{
     }
 
     console.log(userFormPost);//
-  const hendlyFormSubmit=(e)=>{
+  const hendleFormSubmit=(e)=>{
   e.preventDefault(); // чтобы отменить перезагрузку страницы
-  api.addPostForm(userFormPost);
-  addPost(userFormPost);
+  api.addPostForm(userFormPost).then(newPost => {
+    addPost(newPost);
+    setShow (false);
+  });
+  // addPost(userFormPost);
 
 }
 // const handleSubmit = (onSubmit) => {
@@ -46,16 +51,21 @@ export const FormPost = ({addPost, setShow})=>{
     const addUserPost = async(data)=>{
 
          await api.addPostForm(data);
-        console.log({data});
+        // console.log({data});
     }
-
+    
+    let navigate = useNavigate(); //хук для того чтобы при нажатии на карточку вылетало окно с постом именно этой карточки с данным айди
+    const handleClick=()=>{
+    navigate('/');
+    };
 
 
     return(
 
 
 
-    <form  onSubmit={hendlyFormSubmit}>
+
+    <form  onSubmit={hendleFormSubmit}>
 
         <div >
             <h1 className='head'>ПОДЕЛИСЬ СВОИМ ПОСТОМ</h1>
@@ -82,7 +92,7 @@ export const FormPost = ({addPost, setShow})=>{
              <input
              type='text'
              name='title'
-             placeholder="название блюда"
+             placeholder="название поста"
              className = 'input_form'
              value = {userFormPost.title}
              onChange={hendlyFormInput}
@@ -96,7 +106,7 @@ export const FormPost = ({addPost, setShow})=>{
             <textarea
              type='text'
              name='text'
-             placeholder="рецепт"
+             placeholder="описание"
              className = 'input_form'
              //  {...register('text',{
                //     required: "обязательное поле",
@@ -108,9 +118,12 @@ export const FormPost = ({addPost, setShow})=>{
                  
             </textarea>
             <div className=' btn_close_create'>
-                <button type='button' className='btn_c' onClick={()=>setShow(false)  }> ОТМЕНА </button>
-            <button type='submit' className='btn_c' onClick={()=>setShow(false)}> СОЗДАТЬ</button>
+           
+                <button  type="button" className='btn_c' onClick={handleClick  }> ОТМЕНА </button>
+               
+                 <button type="submit"  className='btn_c' > СОЗДАТЬ</button>
             </div>
+                 
             
     </form>
            
