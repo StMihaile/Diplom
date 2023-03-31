@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import './index.css';
 import logo from '../assets/logo8.svg';
 import telegram from "./img/telegram.svg";
 import viber from "./img/viber.svg";
 import vk from "./img/vk.svg";
+import { Link, Route, Routes } from "react-router-dom";
+import { FaqPage } from "../page/faq/faq";
+import { Modal } from "../Form/Modal/modal";
+
+
+
 
 export function Footer(params) {
+  const [activeModal, setActiveModal] = useState(true);
   return(
     <footer className="footer">
        
@@ -43,7 +50,26 @@ export function Footer(params) {
             <div className="faq"> 
               <h2> Часто задаваемые</h2>
               <h2> вопросы</h2>
-              <h3> FAQ </h3>
+              <Routes>
+           <Route path='/faq' element = {
+           <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
+            <div style={{ width: '800px', height: '100%', padding: '20px' }}>
+          
+          <FaqPage/>
+          </div>
+          </Modal>
+            }>
+          </Route>
+        </Routes>
+        <div >
+          <Link
+          to={'/faq'}
+          style = {{ cursor: 'pointer', position: 'relative'}}
+          onClick = {()=> setActiveModal(true)}
+          
+          ><span className='spanFaq'>FAQ</span></Link>
+     
+      </div >
             </div>
 
         </div>

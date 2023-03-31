@@ -23,20 +23,24 @@ border-radius: 10px;
 	padding-left: 30px;
 }
 
-.btn_login{
+.btn{
 
-	padding-right: 50px;
-	width: 90px;
-	height: 40px;
+
+	padding-right: 30px;
+	width: 150px;
+	height: 60px;
 	background-color: yellow;
 	font-family: sans-serif;
-	font-size: 25px;
+	white-space: nowrap;
+	font-size: 18px;
+	text-align: center;
 	color: rgb(10, 0, 0);
     border-radius: 2mm;
+	border-color: #c143e1;
     cursor: pointer;
 	
 }
-.btn_login:hover{
+.btn:hover{
 
 	background-color: rgb(140, 31, 184);
 	color: rgb(248, 248, 248);
@@ -46,4 +50,5 @@ border-radius: 10px;
 	.btn_login_container{
 		padding-right: 30px;
 	}
+	
 	

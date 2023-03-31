@@ -40,6 +40,7 @@ export const Register = () => {
     });
     
     const sendData = async(data) => {
+      console.log (data);
     try {
       const result = await authApi.register({...data, group: 'group-9'});
       console.log(result);
