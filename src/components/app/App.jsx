@@ -17,6 +17,8 @@ import { Login } from '../Login/login';
 import { Register } from '../Register/register';
 import { ResetPass } from '../ResetPass/resetPass';
 import { ModalPost } from '../Form/Modal/modalPost';
+import { Profile } from '../profile/profile';
+import { FaqPage } from '../page/faq/faq';
 
 
 
@@ -97,33 +99,12 @@ function headlyPostLike(posts){
  api.changeLikePosts(posts._id, liked).then((newCard)=>{ // посылаем апи-запрос серверу с айди 
   //пользователя и информацией залайкан пост или нет. получаем новую карточку от сервера
   const newPost = cards.map((cardState)=>{
-    // console.log('карточка из стейта', cardState);
-    // console.log('карточка из сервера', newCard);
+
     return cardState._id === newCard._id ? newCard : cardState; // берем новую карточку и заменяем ей старую
   })
   setCards(newPost)
  })
 }
-
-
-// function deletePost(posts){
-//   const createDelete=posts._id.some(id=> id===currentUser?._id);
-//   console.log(createDelete);
-//   api.deletePostFormUser(posts._id).then((newCard)=>{
-//     const newPost = cards.map((cardState)=>{
-//       // console.log('карточка из стейта', cardState);
-//       // console.log('карточка из сервера', newCard);
-//       return cardState._id === newCard._id ? newCard : cardState; // берем новую карточку и заменяем ей старую
-//     })
-//     setCards(newPost)
-//   })
-  
-//   }
-
-
-
-
-
 
 const addContact = (contact) => {
   setContacts([...contacts, contact])
@@ -209,40 +190,24 @@ const initialPath = location.state?.location;
           </ModalPost>
             }>
           </Route>
-       </Routes>
-
-       {backgroundLocation && (
-        <Routes>
-           <Route path='/login' element = {
+          <Route path='/profile' element = {
            <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
-          
-          <Login/>
-          
+           <Profile/>
+    
           </Modal>
             }>
           </Route>
-        </Routes>
-       )}    
-       <div>
-        {contacts.length && contacts.map((el) => (
-        <div>
-        <p>{el.lastName}</p>
-       <p>{el.name}</p>
-       <p>{el.phoneNumber}</p>
-
-        </div> 
-       ))}
-       </div>   
-
-{/* <Modal activeModal={activeModalPost}setActiveModalPost={setActiveModalPost}>
-           <div style={{ width: '600px', height: '100%' }}>
-           <FormPost addPost={addPost}/>
-           </div>
-</Modal>  */}
-
-       
+      
+           <Route path='/faq' element = {
+           <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
+            <div style={{ width: '800px', height: '100%', padding: '20px' }}>
           
-             
+          <FaqPage/>
+          </div>
+          </Modal>
+            }>
+          </Route>
+       </Routes>         
   <Footer />
 
      </div>
