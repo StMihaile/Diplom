@@ -34,8 +34,15 @@ resetPass (dataUser){
         body:JSON.stringify(dataUser)
     }).then(onResponse);
 };
-}
 
+resetPassToken(dataUser, token) {
+    return fetch(`${this._baseUrl}/password-reset/${token}`, {
+      headers: this._headers,
+      method: 'PATCH',
+      body: JSON.stringify(dataUser),
+    }).then(onResponse);
+  }
+}
 
 
 
