@@ -1,37 +1,27 @@
 import React from "react";
 import './index.css';
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
-import { Modal } from "../Form/Modal/modal";
-import {FormPost} from '../FormPost/formPost.jsx'
+import { useNavigate } from 'react-router-dom';
+import { Link,useLocation } from "react-router-dom";
 
 
 
-export function SubHeader({activeModal, setActiveModal}) {
-
+export function SubHeader({setShow}) {
+  // const navigate = useNavigate();
+  // const location = useLocation()
   return(
     <header className="header_sub">
-        <Routes>
-           <Route path='/faq' element = {
-           <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
-           
-            <div className="modal">
-           <FormPost/>
-          </div>
-          </Modal>
-            }>
-          </Route>
-        </Routes>
-       <Link
-          to={'/formPost'}
-          style = {{ cursor: 'pointer', position: 'relative'}}
-          onClick = {()=> setActiveModal(true)}
-          ><button className='subheader_btn'>ПОДЕЛИСЬ СВОИМ ПОСТОМ</button>
-      </Link>
-     
-        
-        
+       
+    <button className="subheader_btn" onClick={()=> setShow(true)}> ПОДЕЛИСЬ СВОИМ ПОСТОМ </button>
+
         
     </header>
   )
 
 };
+  //  <Link
+  //         to={'/formPost'}
+  //         style = {{ cursor: 'pointer', position: 'relative'}}
+  //         onClick = {()=> setShow(true)}
+  //         state = {{backgroundLocation: location, initialPath: location.pathname}}
+  //         ><button className='btn_login'>ПОДЕЛИСЬ СВОИМ ПОСТОМ</button></Link>
+         

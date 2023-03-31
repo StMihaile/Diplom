@@ -22,6 +22,9 @@ export function Header(props, {children, activeModal, setActiveModal}) {
             {children}
         <Search  onInput = {props.changeInput}/>
 
+     <div className='btn_login_container' >
+
+
         <div>
           <Routes>
            <Route path='/profile' element = {
@@ -52,6 +55,7 @@ export function Header(props, {children, activeModal, setActiveModal}) {
             }>
           </Route>
         </Routes>
+
           <Link
           to={'/login'}
           style = {{ cursor: 'pointer', position: 'relative'}}
