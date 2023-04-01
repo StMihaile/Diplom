@@ -4,12 +4,8 @@ import logo from '../assets/logo8.svg';
 import Search from "../Search/search";
 import { Link} from 'react-router-dom';
 
-
-
-export function Header(props, {children, activeModal, setActiveModal}) {
-
- 
-   
+export function Header(props, {children, setActiveModal}) {
+  
   return(
     <header className="header">
    
@@ -21,10 +17,7 @@ export function Header(props, {children, activeModal, setActiveModal}) {
         <Search  onInput = {props.changeInput}/>
 
      <div className='btn_login_container'>
-
-
-        
-         
+       
            <Link 
            to={'/profile'}
            style = {{ cursor: 'pointer', position: 'relative'}}

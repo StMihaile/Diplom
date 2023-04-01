@@ -4,12 +4,7 @@ import logo from '../assets/logo8.svg';
 import telegram from "./img/telegram.svg";
 import viber from "./img/viber.svg";
 import vk from "./img/vk.svg";
-import { Link, Route, Routes } from "react-router-dom";
-import { FaqPage } from "../page/faq/faq";
-import { Modal } from "../Form/Modal/modal";
-
-
-
+import { Link } from "react-router-dom";
 
 export function Footer(params) {
   const [activeModal, setActiveModal] = useState(true);
