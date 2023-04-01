@@ -36,11 +36,6 @@ export const Profile = () => {
     },
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  };
-
   return (
     <>
       <div className="profile">
