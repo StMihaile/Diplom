@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 import { UserContext } from '../../context/userContext';
 
 
+import { UserContext } from '../../context/userContext';
+
+
+
 const Card = ({ title,
     image,
     likes,
@@ -14,6 +18,7 @@ const Card = ({ title,
     onPostsLike,
     _id,
     comments
+
 }) => { //в скобочках - указываем нужные пропсы, которые прокинули в кардлисте
 
     const instance = useContext(UserContext); // через контекст ловим юзера
@@ -54,6 +59,7 @@ const Card = ({ title,
                         <img src={comment} alt="Добавить комментарий" className=" card_comment_ikon" />
                     </a>
                 </div>
+
 
                 <div className="card_counter_comment">
                     <span>{commentsCount}</span>

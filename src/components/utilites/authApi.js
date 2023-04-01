@@ -1,54 +1,54 @@
 
-const onResponse = (res)=>{ 
-    return res.ok ? res.json(): Promise.reject(`ошибка : ${res.status}`);
+const onResponse = (res) => {
+    return res.ok ? res.json() : Promise.reject(`ошибка : ${res.status}`);
 }; // асинхронщина. если пришел ответ от сервера, то обрабатываем его json-ом, если нет - то вернет номер ошибки
 
-class Api{ // задаем класс апи, делаем конструктор
-constructor ({baseUrl, headers}){
-this._headers = headers;
-this._baseUrl = baseUrl
-}
+class Api { // задаем класс апи, делаем конструктор
+    constructor({ baseUrl, headers }) {
+        this._headers = headers;
+        this._baseUrl = baseUrl
+    }
 
-login (dataUser){
-    return fetch(`${this._baseUrl}/signin`,{
-        headers: this._headers,
-        method: 'POST', 
-        body:JSON.stringify(dataUser)
-    }).then(onResponse);//обработчик
-};
-
-
-register (dataUser){
-    return fetch(`${this._baseUrl}/signup`,{
-        headers: this._headers,
-        method: 'POST', 
-        body:JSON.stringify(dataUser)
-    }).then(onResponse);
-};
+    login(dataUser) {
+        return fetch(`${this._baseUrl}/signin`, {
+            headers: this._headers,
+            method: 'POST',
+            body: JSON.stringify(dataUser)
+        }).then(onResponse);//обработчик
+    };
 
 
-resetPass (dataUser){
-    return fetch(`${this._baseUrl}/forgot-password`,{
-        headers: this._headers,
-        method: 'POST', 
-        body:JSON.stringify(dataUser)
-    }).then(onResponse);
-};
+    register(dataUser) {
+        return fetch(`${this._baseUrl}/signup`, {
+            headers: this._headers,
+            method: 'POST',
+            body: JSON.stringify(dataUser)
+        }).then(onResponse);
+    };
 
-resetPassToken(dataUser, token) {
-    return fetch(`${this._baseUrl}/password-reset/${token}`, {
-      headers: this._headers,
-      method: 'PATCH',
-      body: JSON.stringify(dataUser),
-    }).then(onResponse);
-  }
+
+    resetPass(dataUser) {
+        return fetch(`${this._baseUrl}/forgot-password`, {
+            headers: this._headers,
+            method: 'POST',
+            body: JSON.stringify(dataUser)
+        }).then(onResponse);
+    };
+
+    resetPassToken(dataUser, token) {
+        return fetch(`${this._baseUrl}/password-reset/${token}`, {
+            headers: this._headers,
+            method: 'PATCH',
+            body: JSON.stringify(dataUser),
+        }).then(onResponse);
+    }
 }
 
 
 
 const config = {
-    baseUrl : ' https://api.react-learning.ru',
-    headers : {
+    baseUrl: ' https://api.react-learning.ru',
+    headers: {
         "Content-Type": "application/json",
 
     },

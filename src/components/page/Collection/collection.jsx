@@ -3,6 +3,7 @@ import React from 'react';
 import CardList from '../../cardList/CardList';
 import './index.css'
 
+
 export const CollectionPage = ({ headlyPostLike }) => {
 
    return (
@@ -12,5 +13,6 @@ export const CollectionPage = ({ headlyPostLike }) => {
       </div>
          
       </>
+
    )
 }
