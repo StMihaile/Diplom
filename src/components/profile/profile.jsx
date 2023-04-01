@@ -9,9 +9,9 @@ import { BaseButton } from "../BaseButton/baseButton";
 import { Form } from "../Form/form";
 import { openNotification } from "../notification/notification";
 import "./index.css";
+import Spinner from "../spinner/Spinner";
 export const Profile = () => {
-  console.log("this is profile");
-
+ 
   const navigate = useNavigate();
   const {
     register,
@@ -24,10 +24,11 @@ export const Profile = () => {
   const sendData = async (data) => {
     try {
       await api.setUserInfo(data);
-      openNotification("success", "Success", "Данные успешно изменены");
+      console.log(data);
+      openNotification("success", "Success", "Данные успешно обновлены");
     } catch (error) {
       openNotification("error", "Error", "Что-то пошло не так");
-    }
+    } 
   };
   const required = {
     required: {
@@ -38,19 +39,21 @@ export const Profile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
   };
-
+ 
   return (
     <>
       <div className="profile">
-        <span className="profile__back" onClick={() => navigate(-1)}>
+        <span className="back" onClick={() => navigate(-1)}>
           {"< Назад"}
         </span>
-        <h1 className="profile__title">Мои данные</h1>
+      
+        <h1 className="title">Мои данные</h1>
         {currentUser ? (
-          <Form className="" handleFormSubmit={handleSubmit(sendData)}>
-            <div className="profile__info">
+          <Form handleFormSubmit={handleSubmit(sendData)}>
+       
+            <div className="info">
               <div>
                 <input
                   {...register("name", required)}
@@ -70,7 +73,7 @@ export const Profile = () => {
                 className="auth__input"
                 type="text"
                 name="about"
-                placeholder="Обо мне"
+                placeholder="Звание"
                 defaultValue={currentUser.about}
               />
               {errors.about && (
@@ -93,18 +96,19 @@ export const Profile = () => {
                 disabled
               />
             </div>
-            <BaseButton type="submit" color={"yellow"}>
+            
+            <BaseButton  type="submit" >
               Сохранить
             </BaseButton>
           </Form>
         ) : (
-          <>Loading</>
+          <Spinner/>
         )}
-        <div className="profile__logout">
-          <BaseButton onClick={handleLogout} color={"yellow"}>
+      
+          <BaseButton onClick={handleLogout}>
             Выйти
           </BaseButton>
-        </div>
+        
       </div>
     </>
   );
