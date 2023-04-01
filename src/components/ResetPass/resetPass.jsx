@@ -21,7 +21,6 @@ export const ResetPass = ({ setAuthentificated }) => {
 
   const { currentUser } = useContext(UserContext)
   const navigate = useNavigate()
-
   console.log({ currentUser })
 
   const [tokenResp, setTokenResp] = useState(null)
@@ -36,9 +35,7 @@ export const ResetPass = ({ setAuthentificated }) => {
       message: VALIDATE_CONFIG.email,
     },
   })
- 
- 
-  console.log(tokenResp)
+
   const sendData = async (formData) => {
     if (tokenResp) {
       const { token, data } = await authApi.resetPassToken(

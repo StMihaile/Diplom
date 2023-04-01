@@ -16,7 +16,7 @@
 }
 
 
-/* Horizontal line */
+/* Горизонтальная линия */
 .accordionButton::before {
 	content: '';
 	width: 14px;
@@ -27,10 +27,10 @@
 	left: 0;
 	display: block;
 	transition: all 0.3s;
-  }
+}
 
-  /* Vertical line */
-  .accordionButton::after {
+/* Вертикальная линия */
+.accordionButton::after {
 	content: '';
 	width: 2px;
 	height: 14px;
@@ -40,15 +40,15 @@
 	left: 6px;
 	display: block;
 	transition: all 0.3s;
-  }
+}
 
-  .active .accordionButton::after {
+.active .accordionButton::after {
 	transform: rotate(90deg) translateX(-1px);
-  }
+}
 
-  .active .accordionButton::before {
+.active .accordionButton::before {
 	transform: rotate(180deg);
-  }
+}
 
 .title {
 	margin: 0;

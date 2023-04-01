@@ -2,8 +2,8 @@ import { Children, useState } from 'react';
 
 import s from './index.module.css';
 
-export const Form = ({title, handleFormSubmit, children}) => {
- 
+export const Form = ({ title, handleFormSubmit, children }) => {
+
 
   return (
     <form className={s.form} onSubmit={handleFormSubmit}>

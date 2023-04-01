@@ -9,15 +9,17 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
-    color:black;
+    color: black;
     cursor: pointer;
 }
-.blue{
+
+.blue {
     border: 1px solid blue;
-    background-color:  rgb(213, 243, 245);
-    
+    background-color: rgb(213, 243, 245);
+
 
 }
+
 .white {
     border: 1px solid blue;
     background-color: white;
