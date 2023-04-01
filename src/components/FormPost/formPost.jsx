@@ -29,7 +29,7 @@ export const FormPost = ({addPost, setShow})=>{
     console.log(userFormPost);//
   const hendleFormSubmit=(e)=>{
   e.preventDefault(); // чтобы отменить перезагрузку страницы
-  api.addPostForm(userFormPost).then(newPost => {
+  api.addPostForm(userFormPost).then((newPost) => {
     addPost(newPost);
     setShow (false);
   });

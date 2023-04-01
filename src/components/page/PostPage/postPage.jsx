@@ -50,14 +50,23 @@ const onSendComments = async (data) => {
    }
  };
 
+ const  deletePost = async (id)=>{
+if(window.confirm('Вы действительно хотите удалить пост ?'))
+  try{
+    const result = await api.deletePostFormUser(posts._id, id);
+     setPost({ ...result });
+     localStorage.setItem('PostPage', JSON.stringify(result))
+  }catch (error) {
+   
+    }
+    
+ }
+
 
 
 
    return (
    <>
-   
-      
-
       <div className="content_container">
 
       
@@ -72,6 +81,7 @@ const onSendComments = async (data) => {
                 setPosts = {setPost}
                 deleteComments={deleteComments}
                 onSendComments={onSendComments}
+                deletePost={deletePost}
                 />)
           }
           

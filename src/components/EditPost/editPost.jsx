@@ -1,22 +1,28 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
-import { Form } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
+import { UserContext } from "../../context/userContext";
+import { BaseButton } from "../BaseButton/baseButton";
+import { Form } from "../Form/form";
 import api from "../utilites/api";
 import './index.css'
 
 
 export const EditPost=()=>{
     const[post,setPost]=useState();
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm();
+      } = useForm({ mode: 'onSubmit' });
       const sendData=async(data)=>{
           await api.editPostById(postId,{...post, title: data.name})
       }
+
+  
       const {postId} = useParams();
      useEffect(()=>{ 
      },[postId])
@@ -32,6 +38,17 @@ export const EditPost=()=>{
 
     return(
 <>
+<div className="profile">
+
+<BaseButton >
+
+<span className="profile__back" onClick={() => navigate(-1)}>
+          {"< Назад"}
+        </span>
+
+</BaseButton>
+  
+        
 <Form className="edit-post" handleFormSubmit={handleSubmit(sendData)}>
               <div className="profile__info">
                 <div>
@@ -50,11 +67,16 @@ export const EditPost=()=>{
 
                 
               </div>
-              <button type="submit" >
-                Сохранить
-              </button>
-            </Form>
+              
+                <BaseButton type="submit" color={"yellow"}>
 
+                Сохранить
+              
+            </BaseButton>
+              
+              
+            </Form>
+            </div>
 </>
 
     )

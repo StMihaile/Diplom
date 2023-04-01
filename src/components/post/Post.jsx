@@ -131,9 +131,8 @@ initialPath: location.pathname
    <div className={s.author}>
       ДАТА СОЗДАНИЯ ПОСТА <h3 className={s.subtitle}>{new Date(created_at).toLocaleString('ru', options)}</h3>
    <button className={s.comments_btn} onClick={deletePost}>
-
-               Удалить
-
+             <Basket/>
+              
             </button>
    
    </div>

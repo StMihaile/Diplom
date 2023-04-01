@@ -173,7 +173,7 @@ const initialPath = location.state?.location;
        
         <Route path = '/edit-post/:postId' element = {
            <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
-          <EditPost/>
+          <EditPost />
          </Modal>
             }
             > </Route>
