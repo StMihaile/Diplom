@@ -1,4 +1,3 @@
 export const NoMatchFound = () => {
-    return <div>Не туда попали</div>;
-  };
-  
+  return <div>Не туда попали</div>;
+};

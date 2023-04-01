@@ -11,7 +11,7 @@ import { openNotification } from "../notification/notification";
 import "./index.css";
 import Spinner from "../spinner/Spinner";
 export const Profile = () => {
- 
+
   const navigate = useNavigate();
   const {
     register,
@@ -24,11 +24,10 @@ export const Profile = () => {
   const sendData = async (data) => {
     try {
       await api.setUserInfo(data);
-      console.log(data);
       openNotification("success", "Success", "Данные успешно обновлены");
     } catch (error) {
       openNotification("error", "Error", "Что-то пошло не так");
-    } 
+    }
   };
   const required = {
     required: {
@@ -41,18 +40,18 @@ export const Profile = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
- 
+
   return (
     <>
       <div className="profile">
         <span className="back" onClick={() => navigate(-1)}>
           {"< Назад"}
         </span>
-      
+
         <h1 className="title">Мои данные</h1>
         {currentUser ? (
           <Form handleFormSubmit={handleSubmit(sendData)}>
-       
+
             <div className="info">
               <div>
                 <input
@@ -96,19 +95,16 @@ export const Profile = () => {
                 disabled
               />
             </div>
-            
-            <BaseButton  type="submit" >
+
+            <BaseButton type="submit" >
               Сохранить
             </BaseButton>
           </Form>
         ) : (
-          <Spinner/>
+          <Spinner />
+
         )}
-      
-          <BaseButton onClick={handleLogout}>
-            Выйти
-          </BaseButton>
-        
+
       </div>
     </>
   );

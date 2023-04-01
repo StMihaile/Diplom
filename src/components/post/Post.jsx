@@ -39,9 +39,6 @@ export const Post = ({
   const[users, setUsers]=useState([])
   const [showForm, setShowForm] = useState(false);
   const [isClicked, setClicked] = useState(isLiked);
-//   console.log(isLiked);
- 
-console.log({comments});
 
 const authorPost = author.name;// ввел переменную - взял значение объекта 'author',
 // полученного в ответе сервера по ключу 'name'
