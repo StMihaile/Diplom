@@ -80,6 +80,7 @@ function App() {
   useEffect(() => {
     Promise.all([api.getPostList(), api.getUserInfo()]).then(([dataPosts, dataUser]) => { // промис.олл - не пропустит компиляцию, пока не выполнятся условия
       setCards(dataPosts);
+
       setCurrentUser(dataUser);
     });
   }, []);
@@ -92,6 +93,7 @@ function App() {
 
   function headlyPostLike(posts) {
     const liked = posts.likes.some(id => id === currentUser?._id); //проверяем , залайкан ли этот пост этим пользователем
+
     api.changeLikePosts(posts._id, liked).then((newCard) => { // посылаем апи-запрос серверу с айди 
       //пользователя и информацией залайкан пост или нет. получаем новую карточку от сервера
       const newPost = cards.map((cardState) => {
@@ -107,6 +109,7 @@ function App() {
   };
   const addPost = (dataPostForm) => {
     setDataPostForm([...cards, dataPostForm])
+
   }
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
@@ -120,21 +123,12 @@ function App() {
             <div className='content_cards'>
               <div className="App">
 
-
-
-
                 <Header changeInput={handleInputChange} setActiveModal={setActiveModal} />
-
                 <SearchInfo searchCount={cards.length} searchText={searchQuery} />
-
-
                 <SubHeader show={show} setShow={setShow} ></SubHeader>
-
-
                 <Routes location={backgroundLocation && { ...backgroundLocation, path: initialPath || location }}>
                   <Route path='/login' element={
                     <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
-
                       <Login />
 
                     </Modal>
@@ -162,10 +156,6 @@ function App() {
                   > </Route>
                   <Route path='post/:postId' element={<PostPage currentUser={currentUser} />}></Route>
 
-                  {/* <Route path='formPost' element = {<FormPost addPost={addPost} />}></Route> */}
-
-
-
                   <Route path='/edit-post/:postId' element={
                     <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
                       <EditPost />
@@ -174,12 +164,8 @@ function App() {
                   > </Route>
 
 
-
-
                   <Route path='/formPost' element={
                     <ModalPost show={show} setShow={setShow}>
-
-
                       <div style={{ width: '600px', height: '100%' }}>
                         <FormPost addPost={addPost} />
                       </div>
@@ -213,6 +199,7 @@ function App() {
         </UserContext.Provider>
       </CardContext.Provider>
     </>
+
   )
 }
 

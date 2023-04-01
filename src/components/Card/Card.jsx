@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import './index.css';
 import { ReactComponent as Heart } from '../assets/heart3.svg'; //импортируем реакт компонент, делаем его кастомным тегом
 import comment from '../assets/comment.svg';
-import star from '../assets/star.svg';
 import cn from 'classnames';
 import { Link } from "react-router-dom";
+import { UserContext } from '../../context/userContext';
+
 
 import { UserContext } from '../../context/userContext';
+
 
 
 const Card = ({ title,
@@ -16,7 +18,9 @@ const Card = ({ title,
     onPostsLike,
     _id,
     comments
-}) => {
+
+}) => { //в скобочках - указываем нужные пропсы, которые прокинули в кардлисте
+
     const instance = useContext(UserContext); // через контекст ловим юзера
 
     const liked = likes.some((id) => id === instance?.currentUser._id); //проверяем не является ли пользователь (id) элементом массива лайков данного поста
@@ -43,8 +47,6 @@ const Card = ({ title,
                     <button className={cn("card_favorite", { 'card_like_activ': liked, })}
                         onClick={() => onPostsLike({ _id, likes })}>
                         <Heart className="card_favorite_ikon" />
-
-
                     </button>
                 </div>
 
@@ -55,21 +57,15 @@ const Card = ({ title,
                 <div className="card_comment">
                     <a href="/v2/:group-9/posts/comments/:postId">
                         <img src={comment} alt="Добавить комментарий" className=" card_comment_ikon" />
-
                     </a>
                 </div>
+
+
                 <div className="card_counter_comment">
                     <span>{commentsCount}</span>
                 </div>
-
-
             </div>
-
-
-
-
         </div>
     )
-
 };
 export default Card;

@@ -1,21 +1,18 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CardList from '../../cardList/CardList';
-import { Paginator } from '../../Paginator/paginator';
-import api from '../../utilites/api';
+import './index.css'
 
 
 export const CollectionPage = ({ headlyPostLike }) => {
 
    return (
       <>
-
+      <div className='container'>
          <CardList onPostsLike={headlyPostLike} />
-
-         {/* <Paginator pageZice={pageZice} page={page}/> */}
-
+      </div>
+         
       </>
 
    )
-
 }
