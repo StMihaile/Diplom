@@ -1,10 +1,41 @@
 .container {
-	max-width: 1024px;
-	padding-left: 16px;
-	padding-right: 16px;
-	width: 100%;
-	margin: 0 auto;
+
+	
+	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    position: relative;
+    background: #fff;
+    border-radius: 2px;
+    display: grid;
+    grid-template-rows: minmax(0px, max-content) 10fr minmax(0px, max-content);
+    grid-template-columns: minmax(50px, max-content);
 }
+.container_block{
+
+	/* display: block; */
+}
+.container_page{
+	display: grid;
+    /* grid-template-columns: minmax(400px, 600px) minmax(200px, 350px); */
+    gap: 5px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 950px){
+	.container_page{
+		grid-template-columns: 1fr;
+
+	}
+}
+
+
 
 .product {
 	display: flex;
@@ -14,6 +45,8 @@
 }
 
 .postTitle {
+	display: flex;
+	justify-content: center;
 	margin-top: 0;
 	font-weight: 800;
 	font-size: 28px;
@@ -22,9 +55,13 @@
 }
 
 .imgWrapper {
-	flex: 1;
-
+	max-width: 100%;
+    width: 1000px;
+	vertical-align: middle;
+    border-style: none;
 }
+
+
 .btn {
     width: 300px;
 	height: 40px;
@@ -35,12 +72,21 @@
 	 
 }
 .subtitle {
-	font-size: 16px;
-	line-height: 20px;
-	font-weight: 400;
+	
+	font-size: 25px;
+	
+	font-weight: 600;
 	margin-bottom: 40px;
 
 }
+
+.subtitle_container{
+width: 600px;
+display: flex;
+justify-content:space-between;
+align-items: flex-start;
+}
+
 .buttonclick{
 display: flex;
 justify-content: space-evenly;
@@ -198,8 +244,8 @@ line-height: 20px;
   }
   .comments_btn{
 
-	width: 10rem;
-	/* height: 3rem; */
+	width: 150px;
+	
 	font-family: Helvetica, arial, serif;
     color:rgb(140, 31, 184);
     text-align:center;
@@ -230,23 +276,6 @@ line-height: 20px;
 
 }
 
-/* .comments_btn:before {
-	position: absolute;
-	content: '';
-	top: -2px;
-	left: -2px;
-	height: calc(100% + 4px);
-	width: calc(100% + 4px);
-	border-radius: 5px;
-	z-index: -1;
-	opacity: 0;
-	filter: blur(5px);
-	background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-	background-size: 400%;
-	transition: opacity .3s ease-in-out;
-	animation: animate 20s linear infinite;
-  } */
-  
   .comments_btn:hover {
 	opacity: 0.7;
     filter: alpha(opacity=70);
