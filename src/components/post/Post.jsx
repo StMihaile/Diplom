@@ -70,6 +70,7 @@ export const Post = ({
     if (!users.length) return 'User'
     const user = users.find(el => el._id === id)
     return user?.name ?? 'User'
+    
   }
   const options = { // компонент глобального объекта Data для преобразования даты, прилетающей из бэка в читабельный вид
     day: 'numeric',
@@ -106,7 +107,7 @@ export const Post = ({
           <div className={s.subtitle_container}>
             <h3 className={s.subtitle}>АВТОР ПОСТА</h3>
 
-           <h3 className={s.subtitle}><Avatar/>{authorPost}</h3>
+           <h3 className={s.subtitle}>{authorPost}</h3>
           </div>
           <Link className={s.comments_btn}
             to={`/edit-post/${_id}`}
@@ -183,7 +184,7 @@ export const Post = ({
 
             <div className={s.comment__author}>
               <div className={s.comments_author_data_basket}>
-                <span><Avatar/>{getUser(e.author)}</span>
+                <span>{getUser(e.author)}</span>
                 <img src="e.author.avatar" alt="" />
                 <span className={s.comment__data}>{new Date(e.created_at).toLocaleString('ru', options)}</span>
                 <span className={s.basket}
