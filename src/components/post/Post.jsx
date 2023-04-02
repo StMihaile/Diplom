@@ -116,12 +116,6 @@ export const Post = ({
            <h3 className={s.subtitle_text_line}>{authorPost}</h3>
           </div >
           <Link 
-
-
-           <h3 className={s.subtitle}>{authorPost}</h3>
-          </div>
-          <Link className={s.comments_btn}
-
             to={`/edit-post/${_id}`}
             onClick={() => setActiveModal(true)}
             state={{

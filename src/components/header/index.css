@@ -7,8 +7,8 @@
 
 	background-color: black;
 	background-size: 100% 100%;
-	border: 2px solid #c143e1;
-	box-shadow: 0 0 15px #8d14ab;
+	border: 2px solid #eb8424;
+	box-shadow: 0 0 15px rgb(252, 96, 5);
 	border-radius: 10px;
 
 
@@ -30,21 +30,20 @@
 	padding-right: 30px;
 	width: 150px;
 	height: 60px;
-	background-color: yellow;
+	background-color: rgb(252, 96, 5);
 	font-family: sans-serif;
 	white-space: nowrap;
 	font-size: 18px;
 	text-align: center;
 	color: rgb(10, 0, 0);
 	border-radius: 2mm;
-	border-color: #c143e1;
 	cursor: pointer;
 
 }
 
 .btn:hover {
 
-	background-color: rgb(140, 31, 184);
+	background-color: rgb(132, 133, 133);
 	color: rgb(248, 248, 248);
 	transition: All 0.5s ease;
 }
