@@ -1,4 +1,6 @@
- /* .content_container{
+
+/* .content_container{
+
     display: flex;
     justify-content: center;
   width: 100%;
@@ -7,12 +9,14 @@ position: absolute;
 top: 0;
 left: 0;
 overflow: auto;  
-} 
 
- .content_cards{
-display: flex;
-    justify-content: center;
-  width: 100%;
-height: 100%;
+}  */
+
+.content_cards{
+  padding: 20px 0px;
+  background-color: #363436;
+  /* background-image: url(); */
+  box-shadow: inset 0 0 14px -8px;
+
 
 }  */

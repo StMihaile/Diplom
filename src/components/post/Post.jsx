@@ -102,14 +102,26 @@ export const Post = ({
         <div >
           <img src={image} className={s.imgWrapper} alt='#' />
         </div>
+            <div className={s.comments__name}>
+              <span> ОПИСАНИЕ ПОСТА</span>
+            </div>
+            <p className={s.subtitle_text} dangerouslySetInnerHTML={textHTML}></p>
 
+          <div className={s.container_description}>
         <div className={s.author}>
           <div className={s.subtitle_container}>
-            <h3 className={s.subtitle}>АВТОР ПОСТА</h3>
+            <h3 className={s.subtitle}>АВТОР :</h3>
+
+
+           <h3 className={s.subtitle_text_line}>{authorPost}</h3>
+          </div >
+          <Link 
+
 
            <h3 className={s.subtitle}>{authorPost}</h3>
           </div>
           <Link className={s.comments_btn}
+
             to={`/edit-post/${_id}`}
             onClick={() => setActiveModal(true)}
             state={{
@@ -120,19 +132,22 @@ export const Post = ({
             <Pen />
           </Link>
         </div>
+
         <div className={s.author}>
           <div className={s.subtitle_container}>
-            <h3 className={s.subtitle}>ДАТА СОЗДАНИЯ ПОСТА</h3>
-            <h3 className={s.subtitle}>{new Date(created_at).toLocaleString('ru', options)}</h3>
+            <h3 className={s.subtitle}>СОЗДАН :</h3>
+            <h3 className={s.subtitle_text_line}>{new Date(created_at).toLocaleString('ru', options)}</h3>
           </div>
-          <button className={s.comments_btn} onClick={deletePost}>
+          <span className={s.basket} onClick={deletePost}>
             <Basket />
 
-          </button>
+          </span>
 
         </div>
 
         <div className={s.ratingInfo}>
+          
+          <span className={s.ratingInfoCount}>{comments.length} комментариев </span>
           <h1 className={s.heart_delete}>
 
             <button className={cn(s.favorite, { [s.favoriteActiv]: isClicked })}
@@ -141,22 +156,26 @@ export const Post = ({
 
             </button>
           </h1>
-          <span className={s.ratingInfoCount}>{comments.length} комментариев </span>
+          
         </div>
 
-        <div className={s.comments__name}>
-          <span> ОПИСАНИЕ ПОСТА</span>
-        </div>
-        <p className={s.subtitle} dangerouslySetInnerHTML={textHTML}></p>
+                </div>
       </div>
-      <div className={s.buttonclick}><button onClick={handleClick} className={s.btn}> ВЕРНУТЬСЯ НАЗАД</button>
-        <button onClick={handleClick} className={s.btn}> НОВЫЙ ПОИСК</button>
+      <div className={s.buttonclick}>
+        <button onClick={handleClick} className={s.btn}>НАЗАД</button>
+        <button onClick={handleClick} className={s.btn}>ПОИСК</button>
       </div>
       <div className={s.comments}>
         <div className={s.comments__control}>
           <span className={s.comments__name}>КОММЕНТАРИИ</span>
+          
           {!showForm ? (
-            <button className={s.comments_btn} onClick={() => setShowForm(true)}> Добавить комментарий</button>) : (
+            <button className={s.comments_btn_opasyty} onClick={() => setShowForm(true)}>
+              <div className={s.comments_containers}>
+                <span className={s.comments_title}>Добавить комментарий</span>
+                <hr className={s.line} /> 
+               </div> 
+                </button>) : (
               <Form className={s.form}
               handleFormSubmit={handleSubmit(sendComments)}
               title='Написать комментарий'
@@ -172,6 +191,12 @@ export const Post = ({
                 <p className='auth__error'>{errors?.textarea?.message}</p>
                 )}
               <div className={s.form__btn}>
+              
+                <button onClick={()=> setShowForm(false)}>
+  Назад
+</button>
+
+
                 <button className={s.comments_btn} type='submit' >
                   Отправить
                 </button>
