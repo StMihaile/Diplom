@@ -104,7 +104,7 @@ export const Profile = () => {
                   disabled
                 />
               </div>
-              <BaseButton type="submit" color={"yellow"}>
+              <BaseButton type="submit" >
                 Сохранить
               </BaseButton>
             </Form>
@@ -116,14 +116,14 @@ export const Profile = () => {
                   className="auth__input"
                   type="text"
                   name="avatar"
-                  placeholder="Avatar"
+                  placeholder="Аватар"
                   defaultValue={currentUser?.avatar}
                 />
                 {errors.name && (
                   <p className="auth__error">{errors?.name?.message}</p>
                 )}
               </div>
-              <BaseButton type="submit" color={"yellow"}>
+              <BaseButton type="submit" >
                 Изменить аватар
               </BaseButton>
             </Form>
@@ -132,11 +132,8 @@ export const Profile = () => {
           <Spinner />
 
           )}
-          <div className="profile__logout">
-            <BaseButton onClick={handleLogout} color={"yellow"}>
-              Выйти
-            </BaseButton>
-          </div>
+         
+           
         </div>
       </>
     );
