@@ -12,23 +12,6 @@
  grid-template-rows: minmax(0px, max-content) 10fr minmax(0px, max-content);
     grid-template-columns: minmax(50px, max-content); 
 
-	/* box-sizing: border-box;
-    margin: 0; */
-    /* padding: 0 0 0 5rem; */
-    /* color: rgba(0, 0, 0, 0.85);
-    font-size: 14px;
-    font-variant: tabular-nums;
-    line-height: 1.5715;
-    list-style: none;
-    font-feature-settings: 'tnum';
-    position: relative;
-    left: 15rem;
-
-    background: #fff;
-    border-radius: 2px;
-    display: grid;
-    grid-template-rows: minmax(0px, max-content) 10fr minmax(0px, max-content);
-    grid-template-columns: minmax(50px, max-content); */
 }
 
 .container_page{
@@ -241,7 +224,7 @@ line-height: 20px;
 
 .form{
 	display: flex;
-	flex-direction: column;
+  justify-content: center;
 	padding: 2rem 0;
 	gap: 1.5rem;
 	max-width: 42rem;
