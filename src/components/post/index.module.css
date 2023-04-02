@@ -1,21 +1,27 @@
 .container {
 
-	
-	box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    color: rgba(0, 0, 0, 0.85);
+  max-width: 992px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 16px;
+
+	/* box-sizing: border-box;
+    margin: 0; */
+    /* padding: 0 0 0 5rem; */
+    /* color: rgba(0, 0, 0, 0.85);
     font-size: 14px;
     font-variant: tabular-nums;
     line-height: 1.5715;
     list-style: none;
     font-feature-settings: 'tnum';
     position: relative;
+    left: 15rem;
+
     background: #fff;
     border-radius: 2px;
     display: grid;
     grid-template-rows: minmax(0px, max-content) 10fr minmax(0px, max-content);
-    grid-template-columns: minmax(50px, max-content);
+    grid-template-columns: minmax(50px, max-content); */
 }
 .container_block{
 
@@ -101,11 +107,10 @@ justify-content: space-evenly;
 
 }
 .favoriteActiv svg{
-	stroke-width: 0;
-    height: 25px;
-    width: 25px;
-    fill:rgb(140, 31, 184)
-
+	stroke-width: 0; 
+  fill:rgb(140, 31, 184);
+  height: 25px;
+   width: 25px;
 }
 .favoriteIkon {
 
