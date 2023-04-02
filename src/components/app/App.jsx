@@ -51,7 +51,7 @@ function App() {
 
 
 
-  const debounceSearchQuery = useDebounce(searchQuery, 2500);
+  const debounceSearchQuery = useDebounce(searchQuery, 500);
 
   const handleRequest = () => {
 

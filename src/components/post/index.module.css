@@ -72,11 +72,11 @@
 	 
 }
 .subtitle {
-	
 	font-size: 25px;
-	
 	font-weight: 600;
 	margin-bottom: 40px;
+  display: flex;
+  align-items: center;
 
 }
 

@@ -39,3 +39,15 @@
   max-width: 800px;
   margin: 30px 0;
 }
+.image {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 740px;
+  margin: 20px 0;
+}

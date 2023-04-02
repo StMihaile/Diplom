@@ -35,6 +35,13 @@ class Api { // задаем класс апи, делаем конструкто
       method: "PATCH",
       body: JSON.stringify(dataUser),
     }).then(onResponse);
+  };
+  editUserAvatar(body) {
+    return fetch(`${this._baseUrl}/v2/group-9/users/me/avatar`, {
+      ...this._configFunc(),
+      method: "PATCH",
+      body: JSON.stringify(body),
+    }).then((res) => onResponse(res));
   }
 
   changeLikePosts(postId, isLiked) {
@@ -125,8 +132,7 @@ const config = {
   baseUrl: ' https://api.react-learning.ru',
   headers: {
     "Content-Type": "application/json",
-    authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YyNTMyNjNhYTI4NTAzNGY3OGFjOTgiLCJncm91cCI6Imdyb3VwLTkiLCJpYXQiOjE2NzY4MjU1NDksImV4cCI6MTcwODM2MTU0OX0.MfzA40GD9PeRd_KX7UIFsgUfKWd8c6wVTrm51dJhgPc'
-
+    authorization: `Bearer ${localStorage.getItem("token")}`,
   },
   groupId: '/v2/group-9'
 
