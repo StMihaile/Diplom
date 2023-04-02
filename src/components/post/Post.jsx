@@ -72,6 +72,7 @@ export const Post = ({
     if (!users.length) return 'User'
     const user = users.find(el => el._id === id)
     return user?.name ?? 'User'
+    
   }
   const options = { // компонент глобального объекта Data для преобразования даты, прилетающей из бэка в читабельный вид
     day: 'numeric',
