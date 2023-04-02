@@ -117,7 +117,7 @@ function App() {
 
   return (
     <>
-      <CardContext.Provider value={{ cards: cards, setActiveModal: setActiveModal, setShow: setShow }}>
+      <CardContext.Provider value={{ cards: cards, setActiveModal: setActiveModal, setShow: setShow,headlyPostLike: headlyPostLike  }}>
         <UserContext.Provider value={{ currentUser: currentUser, headlyPostLike: headlyPostLike }}>
           <div className='content_container'>
             <div className='content_cards'>

@@ -28,17 +28,20 @@ export const EditPost = () => {
       .getPostsById(postId)// возвращается промес
       .then((postData) => setPost(postData))//обрабатываем через зен и кетч
       .catch((err) => console.log('err', err))
+
   }, [postId]); // массив зависимостей - если его нет, то эффект при каждом рендеринге, если есть(пустой) - то 1 раз, 
-                // если заполнен , то при изменении любого элемента массива
+  // если заполнен , то при изменении любого элемента массива
   return (
     <>
       <div className="profile">
-        <BaseButton >
-          <span className="profile__back" onClick={() => navigate(-1)}>
-            {"< Назад"}
-          </span>
-        </BaseButton>
+
         <Form className="edit-post" handleFormSubmit={handleSubmit(sendData)}>
+
+          <BaseButton >
+            <span className="profile__back" onClick={() => navigate(-1)}>
+              {"< Назад"}
+            </span>
+          </BaseButton>
           <div className="profile__info">
             <div>
               <input

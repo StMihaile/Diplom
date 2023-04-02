@@ -21,6 +21,7 @@ export const Post = ({
   created_at,
   likes = [],
   onPostsLike,
+  currentUser,
   _id,
   deletePost,
   comments,
@@ -46,9 +47,9 @@ export const Post = ({
   const onLike = (e) => {
     onPostsLike(e);
     setClicked((state) => !state);
-    
+
   };
-  
+
 
   const {
     register,
@@ -72,7 +73,7 @@ export const Post = ({
     if (!users.length) return 'User'
     const user = users.find(el => el._id === id)
     return user?.name ?? 'User'
-    
+
   }
   const options = { // компонент глобального объекта Data для преобразования даты, прилетающей из бэка в читабельный вид
     day: 'numeric',
@@ -114,19 +115,19 @@ export const Post = ({
                 <div className={s.subtitle_container}>
                   <h3 className={s.subtitle}>АВТОР :</h3>
 
-           <h3 className={s.subtitle_text_line}>{authorPost}</h3>
-          </div >
-          <Link 
-            to={`/edit-post/${_id}`}
-            onClick={() => setActiveModal(true)}
-            state={{
-              backgroundLocation: location,
-              initialPath: location.pathname
-            }}
-            >
-            <Pen />
-          </Link>
-        </div>
+                  <h3 className={s.subtitle_text_line}>{authorPost}</h3>
+                </div >
+                <Link
+                  to={`/edit-post/${_id}`}
+                  onClick={() => setActiveModal(true)}
+                  state={{
+                    backgroundLocation: location,
+                    initialPath: location.pathname
+                  }}
+                >
+                  <Pen />
+                </Link>
+              </div>
 
               <div className={s.author}>
                 <div className={s.subtitle_container}>
@@ -187,37 +188,40 @@ export const Post = ({
                   )}
                   <div className={s.form__btn}>
 
-                    <button onClick={() => setShowForm(false)}>
+                    <button className={s.btn_form_comment} onClick={() => setShowForm(false)}>
                       Назад
                     </button>
 
 
-                    <button className={s.comments_btn} type='submit' >
+                    <button className={s.btn_form_comment} type='submit' >
                       Отправить
                     </button>
                   </div>
                 </Form>
               )}
             </div>
-            {comments.map((e) => (
-              <div className={s.comment}>
+            {comments
+              ?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+              .map((e) => (
+                <div key={e.created_at} className={s.comment}>
+                  <div className={s.comment__author}>
+                    <div className={s.comments_author_data_basket}>
+                      <span>{getUser(e.author)}</span>
+                      <img src="e.author.avatar" alt="" />
+                      <span className={s.comment__data}>{new Date(e.created_at).toLocaleString('ru', options)}</span>
+                      {e.author === currentUser._id && <span className={s.basket}
+                        onClick={() => deleteComments(e._id)}>
+                        <Basket />
+                      </span>}
 
-            <div className={s.comment__author}>
-              <div className={s.comments_author_data_basket}>
-                <span>{getUser(e.author)}</span>
-                <img src="e.author.avatar" alt="" />
-                <span className={s.comment__data}>{new Date(e.created_at).toLocaleString('ru', options)}</span>
-                <span className={s.basket}
-                  onClick={() => deleteComments(e._id)}>
-                  <Basket />
-                </span>
-
-                  </div>
-                  <div className={s.text}>
-                    <span>{e.text}</span>
+                    </div>
+                    <div className={s.text}>
+                      <span> - </span> <span>{e.text}</span>
+                    </div>
                   </div>
                 </div>
-              </div>))}
+
+              ))}
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import './index.css'
 import Spinner from "../../spinner/Spinner";
 import api from "../../utilites/api";
 import { Post } from "../../post/Post";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from 'react';
 import { UserContext } from '../../../context/userContext';
 export const PostPage = () => {
@@ -12,7 +12,6 @@ export const PostPage = () => {
   const [currentUser, setCurrentUser] = useState([null]);
   const [isloading, setIsloading] = useState([false]);
   const [posts, setPost] = useState([null]);
-
   const { postId } = useParams();
   const { headlyPostLike } = useContext(UserContext);
 
@@ -44,13 +43,17 @@ export const PostPage = () => {
     } catch (error) {
     }
   };
-
+  let navigate = useNavigate(); //хук для того чтобы при нажатии на карточку вылетало окно с постом именно этой карточки с данным айди
+  const handleClick = () => {
+    navigate('/');
+  };
   const deletePost = async (id) => {
     if (window.confirm('Вы действительно хотите удалить пост ?'))
       try {
         const result = await api.deletePostFormUser(posts._id, id);
         setPost({ ...result });
-        localStorage.setItem('PostPage', JSON.stringify(result))
+        handleClick()
+        window.location.reload();
       } catch (error) {
 
       }
@@ -73,7 +76,7 @@ export const PostPage = () => {
             isloading ? (<Spinner />) : (<Post {...posts}
               currentUser={currentUser}
               onPostsLike={onPostsLike}
-              setPosts={setPost}
+              setPost={setPost}
               deleteComments={deleteComments}
               onSendComments={onSendComments}
               deletePost={deletePost}
