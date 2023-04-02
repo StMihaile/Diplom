@@ -34,6 +34,7 @@ export const Post = ({
   const [users, setUsers] = useState([])
   const [showForm, setShowForm] = useState(false);
   const [isClicked, setClicked] = useState(isLiked);
+
   const authorPost = author.name;// ввел переменную - взял значение объекта 'author',
   // полученного в ответе сервера по ключу 'name'
   let navigate = useNavigate(); //хук для того чтобы при нажатии на карточку вылетало окно с постом именно этой карточки с данным айди
@@ -135,6 +136,7 @@ export const Post = ({
             <button className={cn(s.favorite, { [s.favoriteActiv]: isClicked })}
               onClick={onLike}>
               <Heart className={s.favoriteIkon} />
+
             </button>
           </h1>
           <span className={s.ratingInfoCount}>{comments.length} комментариев </span>

@@ -63,8 +63,6 @@ function App() {
 
   useEffect(() => {
     handleRequest();
-    console.log('INPUT', searchQuery);
-
   }, [debounceSearchQuery]);
 
 
@@ -82,7 +80,7 @@ function App() {
   useEffect(() => {
     Promise.all([api.getPostList(), api.getUserInfo()]).then(([dataPosts, dataUser]) => { // промис.олл - не пропустит компиляцию, пока не выполнятся условия
       setCards(dataPosts);
-      //  console.log(dataPosts);
+
       setCurrentUser(dataUser);
     });
   }, []);
@@ -95,7 +93,7 @@ function App() {
 
   function headlyPostLike(posts) {
     const liked = posts.likes.some(id => id === currentUser?._id); //проверяем , залайкан ли этот пост этим пользователем
-    //  console.log(liked);
+
     api.changeLikePosts(posts._id, liked).then((newCard) => { // посылаем апи-запрос серверу с айди 
       //пользователя и информацией залайкан пост или нет. получаем новую карточку от сервера
       const newPost = cards.map((cardState) => {
@@ -111,7 +109,7 @@ function App() {
   };
   const addPost = (dataPostForm) => {
     setDataPostForm([...cards, dataPostForm])
-    // console.log();
+
   }
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
@@ -124,6 +122,7 @@ function App() {
           <div className='content_container'>
             <div className='content_cards'>
               <div className="App">
+
                 <Header changeInput={handleInputChange} setActiveModal={setActiveModal} />
                 <SearchInfo searchCount={cards.length} searchText={searchQuery} />
                 <SubHeader show={show} setShow={setShow} ></SubHeader>
@@ -131,18 +130,23 @@ function App() {
                   <Route path='/login' element={
                     <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
                       <Login />
+
                     </Modal>
                   }>
                   </Route>
                   <Route path='/register' element={
                     <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+
                       <Register />
+
                     </Modal>
                   }>
                   </Route>
                   <Route path='/resetPass' element={
                     <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+
                       <ResetPass />
+
                     </Modal>
                   }>
                   </Route>
@@ -151,6 +155,7 @@ function App() {
                   }
                   > </Route>
                   <Route path='post/:postId' element={<PostPage currentUser={currentUser} />}></Route>
+
                   <Route path='/edit-post/:postId' element={
                     <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
                       <EditPost />
@@ -158,17 +163,20 @@ function App() {
                   }
                   > </Route>
 
+
                   <Route path='/formPost' element={
                     <ModalPost show={show} setShow={setShow}>
                       <div style={{ width: '600px', height: '100%' }}>
                         <FormPost addPost={addPost} />
                       </div>
+
                     </ModalPost>
                   }>
                   </Route>
                   <Route path='/profile' element={
                     <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
                       <Profile />
+
                     </Modal>
                   }>
                   </Route>
@@ -176,6 +184,7 @@ function App() {
                   <Route path='/faq' element={
                     <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
                       <div style={{ width: '800px', height: '100%', padding: '20px' }}>
+
                         <FaqPage />
                       </div>
                     </Modal>
@@ -183,6 +192,7 @@ function App() {
                   </Route>
                 </Routes>
                 <Footer />
+
               </div>
             </div>
           </div>

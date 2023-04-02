@@ -8,64 +8,64 @@ import { Link } from "react-router-dom";
 
 export function Footer(params) {
   const [activeModal, setActiveModal] = useState(true);
-  return(
+  return (
     <footer className="footer">
-       
-        <div className="top">
+
+      <div className="top">
 
 
-          <div className="social">
-              <h1 className="soc"> Соц. сети</h1>
-              <ul className="socials contacts__socials">
-								<li className="socials__item">
-									<a className="socials__link" href="https://t.me/stMihaile">
-										<img src={telegram} alt="telegram" className="socials__icon"/>
-									</a>
-                  </li>
-								
-								<li className="socials__item">
-									<a className="socials__link" href="https://skobelkin.ru/viber/9379935153">
-										<img src={viber} alt="viber" className="socials__icon"/>
-									</a>
-								</li>
-									<li className="socials__item">
-									<a className="socials__link" href="https://vk.com/sipatrov_m">
-										<img src={vk} alt="vk" className="socials__icon"/>
-									</a>
-								</li>
-							</ul> 
-            </div>
+        <div className="social">
+          <h1 className="soc"> Соц. сети</h1>
+          <ul className="socials contacts__socials">
+            <li className="socials__item">
+              <a className="socials__link" href="https://t.me/stMihaile">
+                <img src={telegram} alt="telegram" className="socials__icon" />
+              </a>
+            </li>
 
-           <div className="contact">
-              <h1> Контакты</h1>
-              <h3> тел: +79999999999</h3>
-              <h3> email: ... @mail.ru</h3>
-            </div>
-
-            <div className="faq"> 
-              <h2> Часто задаваемые</h2>
-              <h2> вопросы</h2>
-              
-        <div >
-          <Link
-          to={'/faq'}
-          style = {{ cursor: 'pointer', position: 'relative'}}
-          onClick = {()=> setActiveModal(true)}
-          
-          ><span className='spanFaq'>FAQ</span></Link>
-     
-      </div >
-            </div>
-
+            <li className="socials__item">
+              <a className="socials__link" href="https://skobelkin.ru/viber/9379935153">
+                <img src={viber} alt="viber" className="socials__icon" />
+              </a>
+            </li>
+            <li className="socials__item">
+              <a className="socials__link" href="https://vk.com/sipatrov_m">
+                <img src={vk} alt="vk" className="socials__icon" />
+              </a>
+            </li>
+          </ul>
         </div>
 
-        <div className="bottom"> 
-      
+        <div className="contact">
+          <h1> Контакты</h1>
+          <h3> тел: +79999999999</h3>
+          <h3> email: ... @mail.ru</h3>
+        </div>
+
+        <div className="faq">
+          <h2> Часто задаваемые</h2>
+          <h2> вопросы</h2>
+
+          <div >
+            <Link
+              to={'/faq'}
+              style={{ cursor: 'pointer', position: 'relative' }}
+              onClick={() => setActiveModal(true)}
+
+            ><span className='spanFaq'>FAQ</span></Link>
+
+          </div >
+        </div>
+
+      </div>
+
+      <div className="bottom">
+
         <a className="logo_footer" href="/" title="Логотип">
-             <img src={logo} alt="Логотоп" className="logo"/>
-            </a>
-  
-        </div>
+          <img src={logo} alt="Логотоп" className="logo" />
+        </a>
+
+      </div>
 
     </footer>
   )
