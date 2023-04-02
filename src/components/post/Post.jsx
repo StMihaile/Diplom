@@ -46,7 +46,9 @@ export const Post = ({
   const onLike = (e) => {
     onPostsLike(e);
     setClicked((state) => !state);
+    
   };
+  
 
   const {
     register,
@@ -104,7 +106,7 @@ export const Post = ({
             <div className={s.comments__name}>
               <span> ОПИСАНИЕ ПОСТА</span>
             </div>
-            <p className={s.subtitle_text} dangerouslySetInnerHTML={textHTML}></p>
+            <div className={s.subtitle_text} dangerouslySetInnerHTML={textHTML}></div>
 
             <div className={s.container_description}>
               <div className={s.author}>
