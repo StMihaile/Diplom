@@ -21,6 +21,7 @@ export const Post = ({
   created_at,
   likes = [],
   onPostsLike,
+  currentUser,
   _id,
   deletePost,
   comments,
@@ -46,7 +47,10 @@ export const Post = ({
   const onLike = (e) => {
     onPostsLike(e);
     setClicked((state) => !state);
+    
+    
   };
+
 
   const {
     register,
@@ -70,7 +74,7 @@ export const Post = ({
     if (!users.length) return 'User'
     const user = users.find(el => el._id === id)
     return user?.name ?? 'User'
-    
+
   }
   const options = { // компонент глобального объекта Data для преобразования даты, прилетающей из бэка в читабельный вид
     day: 'numeric',
@@ -97,128 +101,130 @@ export const Post = ({
           <div className={s.container_page}>
 
 
-        <h1 className={s.postTitle}>{title}</h1>
+            <h1 className={s.postTitle}>{title}</h1>
 
-        <div >
-          <img src={image} className={s.imgWrapper} alt='#' />
-        </div>
+            <div >
+              <img src={image} className={s.imgWrapper} alt='#' />
+            </div>
             <div className={s.comments__name}>
               <span> ОПИСАНИЕ ПОСТА</span>
             </div>
-            <p className={s.subtitle_text} dangerouslySetInnerHTML={textHTML}></p>
+            <div className={s.subtitle_text} dangerouslySetInnerHTML={textHTML}></div>
 
-          <div className={s.container_description}>
-        <div className={s.author}>
-          <div className={s.subtitle_container}>
-            <h3 className={s.subtitle}>АВТОР :</h3>
+            <div className={s.container_description}>
+              <div className={s.author}>
+                <div className={s.subtitle_container}>
+                  <h3 className={s.subtitle}>АВТОР :</h3>
 
-
-           <h3 className={s.subtitle_text_line}>{authorPost}</h3>
-          </div >
-          <Link 
-            to={`/edit-post/${_id}`}
-            onClick={() => setActiveModal(true)}
-            state={{
-              backgroundLocation: location,
-              initialPath: location.pathname
-            }}
-            >
-            <Pen />
-          </Link>
-        </div>
-
-        <div className={s.author}>
-          <div className={s.subtitle_container}>
-            <h3 className={s.subtitle}>СОЗДАН :</h3>
-            <h3 className={s.subtitle_text_line}>{new Date(created_at).toLocaleString('ru', options)}</h3>
-          </div>
-          <span className={s.basket} onClick={deletePost}>
-            <Basket />
-
-          </span>
-
-        </div>
-
-        <div className={s.ratingInfo}>
-          
-          <span className={s.ratingInfoCount}>{comments.length} комментариев </span>
-          <h1 className={s.heart_delete}>
-
-            <button className={cn(s.favorite, { [s.favoriteActiv]: isClicked })}
-              onClick={onLike}>
-              <Heart className={s.favoriteIkon} />
-
-            </button>
-          </h1>
-          
-        </div>
-
-                </div>
-      </div>
-      <div className={s.buttonclick}>
-        <button onClick={handleClick} className={s.btn}>НАЗАД</button>
-        <button onClick={handleClick} className={s.btn}>ПОИСК</button>
-      </div>
-      <div className={s.comments}>
-        <div className={s.comments__control}>
-          <span className={s.comments__name}>КОММЕНТАРИИ</span>
-          
-          {!showForm ? (
-            <button className={s.comments_btn_opasyty} onClick={() => setShowForm(true)}>
-              <div className={s.comments_containers}>
-                <span className={s.comments_title}>Добавить комментарий</span>
-                <hr className={s.line} /> 
-               </div> 
-                </button>) : (
-              <Form className={s.form}
-              handleFormSubmit={handleSubmit(sendComments)}
-              title='Написать комментарий'
-              >
-              <textarea
-                {...commentsRegister}
-                className={s.textarea}
-                type='text'
-                name='text'
-                placeholder='оставь комментарий'
-                />
-              {errors.textarea && (
-                <p className='auth__error'>{errors?.textarea?.message}</p>
-                )}
-              <div className={s.form__btn}>
-              
-                <button onClick={()=> setShowForm(false)}>
-  Назад
-</button>
-
-
-                <button className={s.comments_btn} type='submit' >
-                  Отправить
-                </button>
+                  <h3 className={s.subtitle_text_line}>{authorPost}</h3>
+                </div >
+                <Link
+                  to={`/edit-post/${_id}`}
+                  onClick={() => setActiveModal(true)}
+                  state={{
+                    backgroundLocation: location,
+                    initialPath: location.pathname
+                  }}
+                >
+                  <Pen />
+                </Link>
               </div>
-            </Form>
-          )}
-        </div>
-        {comments.map((e) => (
-          <div className={s.comment}>
 
-            <div className={s.comment__author}>
-              <div className={s.comments_author_data_basket}>
-                <span>{getUser(e.author)}</span>
-                <img src="e.author.avatar" alt="" />
-                <span className={s.comment__data}>{new Date(e.created_at).toLocaleString('ru', options)}</span>
-                <span className={s.basket}
-                  onClick={() => deleteComments(e._id)}>
+              <div className={s.author}>
+                <div className={s.subtitle_container}>
+                  <h3 className={s.subtitle}>СОЗДАН :</h3>
+                  <h3 className={s.subtitle_text_line}>{new Date(created_at).toLocaleString('ru', options)}</h3>
+                </div>
+                <span className={s.basket} onClick={deletePost}>
                   <Basket />
+
                 </span>
 
               </div>
-              <div className={s.text}>
-                <span>{e.text}</span>
+
+              <div className={s.ratingInfo}>
+
+                <span className={s.ratingInfoCount}>{comments.length} комментариев </span>
+                <h1 className={s.heart_delete}>
+
+                  <button className={cn(s.favorite, { [s.favoriteActiv]: isClicked })}
+                    onClick={onLike}>
+                    <Heart className={s.favoriteIkon} />
+
+                  </button>
+                </h1>
+
               </div>
+
             </div>
-          </div>))}
           </div>
+          <div className={s.buttonclick}>
+            <button onClick={handleClick} className={s.btn}>НАЗАД</button>
+            <button onClick={handleClick} className={s.btn}>ПОИСК</button>
+          </div>
+          <div className={s.comments}>
+            <div className={s.comments__control}>
+              <span className={s.comments__name}>КОММЕНТАРИИ</span>
+
+              {!showForm ? (
+                <button className={s.comments_btn_opasyty} onClick={() => setShowForm(true)}>
+                  <div className={s.comments_containers}>
+                    <span className={s.comments_title}>Добавить комментарий</span>
+                    <hr className={s.line} />
+                  </div>
+                </button>) : (
+                <Form className={s.form}
+                  handleFormSubmit={handleSubmit(sendComments)}
+                  title='Написать комментарий'
+                >
+                  <textarea
+                    {...commentsRegister}
+                    className={s.textarea}
+                    type='text'
+                    name='text'
+                    placeholder='оставь комментарий'
+                  />
+                  {errors.textarea && (
+                    <p className='auth__error'>{errors?.textarea?.message}</p>
+                  )}
+                  <div className={s.form__btn}>
+
+                    <button className={s.btn_form_comment} onClick={() => setShowForm(false)}>
+                      Назад
+                    </button>
+
+
+                    <button className={s.btn_form_comment} type='submit' >
+                      Отправить
+                    </button>
+                  </div>
+                </Form>
+              )}
+            </div>
+            {comments
+              ?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+              .map((e) => (
+                <div key={e.created_at} className={s.comment}>
+                  <div className={s.comment__author}>
+                    <div className={s.comments_author_data_basket}>
+                      <span>{getUser(e.author)}</span>
+                      <img src="e.author.avatar" alt="" />
+                      <span className={s.comment__data}>{new Date(e.created_at).toLocaleString('ru', options)}</span>
+                      {e.author === currentUser._id && <span className={s.basket}
+                        onClick={() => deleteComments(e._id)}>
+                        <Basket />
+                      </span>}
+
                     </div>
+                    <div className={s.text}>
+                      <span> - </span> <span>{e.text}</span>
+                    </div>
+                  </div>
+                </div>
+
+              ))}
+          </div>
+        </div>
       </div>
     </>
   )

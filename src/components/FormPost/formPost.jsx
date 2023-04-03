@@ -1,10 +1,10 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import api from '../utilites/api';
 import './index.css'
 import { useNavigate } from 'react-router-dom';
 
-export const FormPost = ({ addPost, setShow }) => {
+export const FormPost = ({ addPost, setShow, setCards, setCurrentUser }) => {
   // юзстейт следит за состоянием полей (адресс,имя,рецепт) по средствам функции сетЮзФормПост, которая 
   // в свою очередь изменяется внутри другой функции хедлиФормИнпут ,котораяреагирует на событие (ввод данных)
   const [userFormPost, setUserFormPost] = useState(
@@ -16,6 +16,11 @@ export const FormPost = ({ addPost, setShow }) => {
     }
   );
 
+  let navigate = useNavigate(); //хук для того чтобы при нажатии на карточку вылетало окно с постом именно этой карточки с данным айди
+  const handleClick = () => {
+    navigate('/');
+  };
+
   const hendlyFormInput = (e) => {
     setUserFormPost({ ...userFormPost, [e.target.name]: e.target.value })// расспредиваем юзерФормПост, и для каждого поля будут записыватьсяновые значения
   }
@@ -23,31 +28,19 @@ export const FormPost = ({ addPost, setShow }) => {
   const hendleFormSubmit = (e) => {
     e.preventDefault(); // чтобы отменить перезагрузку страницы
     api.addPostForm(userFormPost).then((newPost) => {
-      addPost(newPost);
-      setShow(false);
+      addPost({ ...newPost });
     });
-
-    // addPost(userFormPost);
+    handleClick()
+    window.location.reload();
 
   }
-  // const handleSubmit = (onSubmit) => {
-  // };
-  // export const FormPost = ({setActiveModal, addPost}) =>{
-  // const {register, handleSubmit, formState: {errors}}= useForm({mode: 'onSubmit'});
-  // console.log(errors);
-
+  
   const addUserPost = async (data) => {
     await api.addPostForm(data);
   }
 
-  let navigate = useNavigate(); //хук для того чтобы при нажатии на карточку вылетало окно с постом именно этой карточки с данным айди
-  const handleClick = () => {
-    navigate('/');
-  };
-
-
-
   return (
+
 
     <form onSubmit={hendleFormSubmit}>
 
@@ -61,9 +54,7 @@ export const FormPost = ({ addPost, setShow }) => {
         placeholder="введите url картинки"
         className='input_form'
 
-        //  {...register('image',{
-        //     required: "обязательное поле",
-        //  })}
+        
 
         value={userFormPost.adress}
         onChange={hendlyFormInput}
@@ -79,9 +70,7 @@ export const FormPost = ({ addPost, setShow }) => {
         value={userFormPost.title}
         onChange={hendlyFormInput}
 
-      //  {...register('title',{
-      //     required: "обязательное поле",
-      //  })}
+      
       >
 
       </input>
@@ -91,9 +80,7 @@ export const FormPost = ({ addPost, setShow }) => {
         placeholder="описание"
         className='input_form'
 
-        //  {...register('text',{
-        //     required: "обязательное поле",
-        //  })}
+        
         value={userFormPost.text}
         onChange={hendlyFormInput}
       >
