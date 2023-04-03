@@ -3,7 +3,7 @@ import './index.css';
 import logo from '../assets/logo8.svg';
 import telegram from "./img/telegram.svg";
 import viber from "./img/viber.svg";
-import vk from "./img/vk.svg";
+import vk from "./img/vkontakte.svg";
 import { Link } from "react-router-dom";
 
 export function Footer(params) {
@@ -13,6 +13,26 @@ export function Footer(params) {
 
       <div className="top">
 
+
+
+        <div className="faq">
+          <div className="title_faq"> Часто задаваемые вопросы</div>
+
+
+          <div className="linc_faq">
+            <Link
+              to={'/faq'}
+              style={{ cursor: 'pointer', position: 'relative' }}
+              onClick={() => setActiveModal(true)}
+
+            ><span className='spanFaq'>FAQ</span></Link>
+
+          </div >
+        </div>
+
+      </div>
+
+      <div className="bottom">
 
         <div className="social">
           <h1 className="soc"> Соц. сети</h1>
@@ -36,34 +56,16 @@ export function Footer(params) {
           </ul>
         </div>
 
+        <a className="logo_footer" href="/" title="Логотип">
+          <img src={logo} alt="Логотоп" className="logo" />
+        </a>
+
         <div className="contact">
           <h1> Контакты</h1>
           <h3> тел: +79999999999</h3>
           <h3> email: ... @mail.ru</h3>
         </div>
 
-        <div className="faq">
-          <h2> Часто задаваемые</h2>
-          <h2> вопросы</h2>
-
-          <div >
-            <Link
-              to={'/faq'}
-              style={{ cursor: 'pointer', position: 'relative' }}
-              onClick={() => setActiveModal(true)}
-
-            ><span className='spanFaq'>FAQ</span></Link>
-
-          </div >
-        </div>
-
-      </div>
-
-      <div className="bottom">
-
-        <a className="logo_footer" href="/" title="Логотип">
-          <img src={logo} alt="Логотоп" className="logo" />
-        </a>
 
       </div>
 
