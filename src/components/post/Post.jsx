@@ -47,7 +47,8 @@ export const Post = ({
   const onLike = (e) => {
     onPostsLike(e);
     setClicked((state) => !state);
-
+    
+    
   };
 
 
