@@ -22,8 +22,7 @@ const Card = ({ title,
     const likesLength = `${likes.length}`;
     const commentsCount = `${comments.length}`;
     const commentActiv = (commentsCount == 0);
-    let navigate = useNavigate(); //хук для того чтобы при нажатии на карточку вылетало окно с постом именно этой карточки с данным айди
-  const handleClick = () => {
+    let navigate = useNavigate(); 
     navigate('/postId');
   };
 
