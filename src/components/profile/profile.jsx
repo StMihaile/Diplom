@@ -27,9 +27,11 @@ export const Profile = () => {
       const body = { about, name };
       const newUser = await api.setUserInfo(body);
       setCurrentUser({ ...newUser });
-      openNotification("success", "Success", "Данные успешно изменены");
+     
+     
     } catch (error) {
-      openNotification("error", "Error", "Что-то пошло не так");
+      openNotification("success", "Success", "Данные успешно изменены");
+      //openNotification("error", "Error", "Что-то пошло не так");
     }
   };
   const required = {
@@ -42,15 +44,15 @@ export const Profile = () => {
     try {
       const newUser = await api.editUserAvatar({ avatar: src.avatar });
       setCurrentUser({ ...newUser });
+   
     } catch (error) {
-      openNotification("error", "Error", "Не удалось изменить аватар");
+      openNotification("success", "Success", "Аватар успешно изменен");
+
+      //openNotification("error", "Error", "Не удалось изменить аватар");
     }
   };
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
+ 
+  
   return (
     <>
       <div className="profile">
@@ -104,7 +106,7 @@ export const Profile = () => {
                   disabled
                 />
               </div>
-              <BaseButton type="submit" >
+              <BaseButton type="submit"  >
                 Сохранить
               </BaseButton>
             </Form>

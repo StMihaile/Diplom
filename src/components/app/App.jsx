@@ -44,7 +44,6 @@ function App() {
   const [cards, setCards] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentUser, setCurrentUser] = useState([null]);
-  const [contacts, setContacts] = useState([]);
   const [activeModal, setActiveModal] = useState(true);
   const [dataPostForm, setDataPostForm] = useState([]);
   const [show, setShow] = useState(true);
@@ -66,11 +65,7 @@ function App() {
   }, [debounceSearchQuery]);
 
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    handleRequest();
-  };
-
+  
   const handleInputChange = (inputValue) => {
     setSearchQuery(inputValue);
   };
@@ -85,11 +80,7 @@ function App() {
     });
   }, []);
 
-  function handleUpdateUser(userUpdateData) {
-    api.setUserInfo(userUpdateData).then((newUser) => {
-      setCurrentUser(newUser);
-    });
-  }
+  
 
   function headlyPostLike(posts) {
     const liked = posts.likes.some(id => id === currentUser?._id); //проверяем , залайкан ли этот пост этим пользователем
@@ -104,9 +95,7 @@ function App() {
     })
   }
 
-  const addContact = (contact) => {
-    setContacts([...contacts, contact])
-  };
+  
   const addPost = (dataPostForm) => {
     setDataPostForm([...cards, dataPostForm])
 
