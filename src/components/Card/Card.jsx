@@ -3,7 +3,7 @@ import './index.css';
 import { ReactComponent as Heart } from '../assets/heart3.svg'; //импортируем реакт компонент, делаем его кастомным тегом
 import { ReactComponent as Comment } from '../assets/comment3.svg';
 import cn from 'classnames';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from '../../context/userContext';
 
 
@@ -22,6 +22,10 @@ const Card = ({ title,
     const likesLength = `${likes.length}`;
     const commentsCount = `${comments.length}`;
     const commentActiv = (commentsCount == 0);
+    let navigate = useNavigate(); //хук для того чтобы при нажатии на карточку вылетало окно с постом именно этой карточки с данным айди
+  const handleClick = () => {
+    navigate('/postId');
+  };
 
 
     return (
@@ -60,7 +64,9 @@ const Card = ({ title,
 
                         <Link to={`/post/${_id}`}>
 
-                            <button className={cn(" card_comment_ikon_none", { 'card_comment_ikon_activ': !commentActiv })}>
+                            <button className={cn(" card_comment_ikon_none", { 'card_comment_ikon_activ': !commentActiv })}
+                            
+                            onClick={handleClick}>
                                 <Comment className="card_comment_ikon" />
                             </button>
                         </Link>
