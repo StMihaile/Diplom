@@ -180,7 +180,7 @@ function App() {
                   }>
                   </Route>
                 </Routes>
-                <Footer />
+                <Footer setActiveModal={setActiveModal}/>
 
               </div>
             </div>
