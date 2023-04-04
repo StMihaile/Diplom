@@ -4,9 +4,7 @@ import api from '../utilites/api';
 import './index.css'
 import { useNavigate } from 'react-router-dom';
 
-export const FormPost = ({ addPost, setShow, setCards, setCurrentUser }) => {
-  // юзстейт следит за состоянием полей (адресс,имя,рецепт) по средствам функции сетЮзФормПост, которая 
-  // в свою очередь изменяется внутри другой функции хедлиФормИнпут ,котораяреагирует на событие (ввод данных)
+export const FormPost = ({ addPost }) => {
   const [userFormPost, setUserFormPost] = useState(
     {
       image: '',
@@ -16,17 +14,17 @@ export const FormPost = ({ addPost, setShow, setCards, setCurrentUser }) => {
     }
   );
 
-  let navigate = useNavigate(); //хук для того чтобы при нажатии на карточку вылетало окно с постом именно этой карточки с данным айди
+  let navigate = useNavigate();
   const handleClick = () => {
     navigate('/');
   };
 
   const hendlyFormInput = (e) => {
-    setUserFormPost({ ...userFormPost, [e.target.name]: e.target.value })// расспредиваем юзерФормПост, и для каждого поля будут записыватьсяновые значения
+    setUserFormPost({ ...userFormPost, [e.target.name]: e.target.value })
   }
 
   const hendleFormSubmit = (e) => {
-    e.preventDefault(); // чтобы отменить перезагрузку страницы
+    e.preventDefault(); 
     api.addPostForm(userFormPost).then((newPost) => {
       addPost({ ...newPost });
     });
@@ -53,9 +51,6 @@ export const FormPost = ({ addPost, setShow, setCards, setCurrentUser }) => {
         name='image'
         placeholder="введите url картинки"
         className='input_form'
-
-        
-
         value={userFormPost.adress}
         onChange={hendlyFormInput}
       >
@@ -69,8 +64,6 @@ export const FormPost = ({ addPost, setShow, setCards, setCurrentUser }) => {
         className='input_form'
         value={userFormPost.title}
         onChange={hendlyFormInput}
-
-      
       >
 
       </input>
@@ -79,8 +72,6 @@ export const FormPost = ({ addPost, setShow, setCards, setCurrentUser }) => {
         name='text'
         placeholder="описание"
         className='input_form'
-
-        
         value={userFormPost.text}
         onChange={hendlyFormInput}
       >

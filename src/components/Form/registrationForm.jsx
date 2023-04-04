@@ -1,10 +1,6 @@
 import s from './index.module.css';
 import { useForm } from 'react-hook-form';
 
-const handleSubmit = (onSubmit) => {
-
-};
-
 export const RegistrationForm = () => {
 
   const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'onChange' });

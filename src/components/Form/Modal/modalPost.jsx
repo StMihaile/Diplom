@@ -1,6 +1,4 @@
 import cn from "classnames";
-import { useEffect } from "react";
-import { useState } from "react";
 import './index.css'
 
 

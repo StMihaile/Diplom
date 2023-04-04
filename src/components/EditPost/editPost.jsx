@@ -10,27 +10,26 @@ import './index.css'
 
 export const EditPost = () => {
   const [post, setPost] = useState();
-  const navigate = useNavigate(); //для перехода с кнопки на нужную страницу
-  const {  // хук юзформ - позволяет принять данные от пользователя и отправить на сервер 
-    register, // параметр, который принимает данные от пользователя
-    handleSubmit, // параметр, который отсылает данные
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
     formState: { errors },
   } = useForm({ mode: 'onSubmit' });
   const sendData = async (data) => {
     await api.editPostById(postId, { ...post, title: data.name })
   }
-  const { postId } = useParams(); // для получения динамических параметров из текущего пути роута, тут достали постайди
+  const { postId } = useParams();
   useEffect(() => {
   }, [postId])
 
-  useEffect(() => { // для побочных эффектов, например сетевой запрос, количество запуска эффекта зависит от массива зависимостей
-    api // делаем запрос
-      .getPostsById(postId)// возвращается промес
-      .then((postData) => setPost(postData))//обрабатываем через зен и кетч
+  useEffect(() => {
+    api
+      .getPostsById(postId)
+      .then((postData) => setPost(postData))
       .catch((err) => console.log('err', err))
 
-  }, [postId]); // массив зависимостей - если его нет, то эффект при каждом рендеринге, если есть(пустой) - то 1 раз, 
-  // если заполнен , то при изменении любого элемента массива
+  }, [postId]);
   return (
     <>
       <div className="profile">

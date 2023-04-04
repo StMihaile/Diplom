@@ -1,16 +1,16 @@
 const onResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`ошибка : ${res.status}`);
-}; // асинхронщина. если пришел ответ от сервера, то обрабатываем его json-ом, если нет - то вернет номер ошибки
+};
 
-class Api { // задаем класс апи, делаем конструктор
+class Api { // 
   constructor({ baseUrl, headers }) {
     this._headers = headers;
     this._baseUrl = baseUrl;
     this._configFunc = configFunc;
   }
-  getPostList() {  // делаем запрос на сервер на получение постов, согласно документации от "бэка"
+  getPostList() {
     return fetch(`${this._baseUrl}/v2/group-9/posts`, { headers: this._headers }).then(onResponse).then((result) => {
-      return result; // обязательно ретерним результат
+      return result;
     });
   }
   getPostListLimit(page, limit) {
@@ -24,7 +24,7 @@ class Api { // задаем класс апи, делаем конструкто
     }).then(onResponse);
   }
 
-  getUserInfo() {  // делаем запрос на сервер на получение информацию о пользователе, согласно документации от "бэка"
+  getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, { headers: this._headers }).then(onResponse).then((result) => {
       return result;
     });
@@ -75,7 +75,7 @@ class Api { // задаем класс апи, делаем конструкто
         method: 'POST',
         body:
 
-          JSON.stringify(data), // {image:'', title:'',text:''}
+          JSON.stringify(data),
       }).then(onResponse);
   }
 
@@ -135,11 +135,7 @@ const config = {
     authorization: `Bearer ${localStorage.getItem("token")}`,
   },
   groupId: '/v2/group-9'
-
-
-
-
 }
 
-const api = new Api(config); // создаем экземпляр класса и прокидываем конфиг, указанный в документации от "бэка"
-export default api; // экспортируем наш экземпляр
+const api = new Api(config);
+export default api; 
