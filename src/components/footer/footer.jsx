@@ -6,8 +6,8 @@ import viber from "./img/viber.svg";
 import vk from "./img/vkontakte.svg";
 import { Link } from "react-router-dom";
 
-export function Footer(params) {
-  const [activeModal, setActiveModal] = useState(true);
+export function Footer(setActiveModal) {
+ 
   return (
     <footer className="footer">
 
