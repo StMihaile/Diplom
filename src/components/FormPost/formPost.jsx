@@ -27,6 +27,7 @@ export const FormPost = ({ addPost }) => {
     e.preventDefault(); 
     api.addPostForm(userFormPost).then((newPost) => {
       addPost({ ...newPost });
+      
     });
     handleClick()
     window.location.reload();
