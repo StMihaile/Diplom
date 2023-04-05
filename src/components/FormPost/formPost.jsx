@@ -30,7 +30,7 @@ export const FormPost = ({ addPost }) => {
       
     });
     handleClick()
-    window.location.reload();
+ 
 
   }
   
