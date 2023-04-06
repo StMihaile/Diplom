@@ -30,8 +30,6 @@ export const FormPost = ({ addPost }) => {
        handleClick()
     });
    
- 
-
   }
   
  
