@@ -29,6 +29,7 @@ export const FormPost = ({ addPost }) => {
       addPost({ ...newPost });
        handleClick()
     });
+    console.log({hendleFormSubmit});
    
   }
   
