@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 import { Accordion } from "../../accordion/accordion";
+
 
 const dataFAQ = [
   {
@@ -53,8 +55,14 @@ const dataFAQ = [
 
 export const FaqPage = () => {
   const data = dataFAQ.map((el) => ({ ...el, id: el.title.slice(10) }));
+  const navigate = useNavigate();
+
   return (
     <>
+
+<span className="back" onClick={() => navigate(-1)}>
+          {"< Назад"}
+        </span>
       <h1>Часто задаваемые вопросы</h1>
       {data.map((e, i) => (
         <Accordion key={e.id || i} title={e.title}>
