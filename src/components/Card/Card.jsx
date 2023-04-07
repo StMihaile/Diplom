@@ -11,21 +11,20 @@ import { UserContext } from '../../context/userContext';
 const Card = ({ title,
     image,
     likes,
-    currentUser,
     onPostsLike,
     _id,
     comments
-}) => { //в скобочках - указываем нужные пропсы, которые прокинули в кардлисте
+}) => {
 
-    const instance = useContext(UserContext); // через контекст ловим юзера
-    const liked = likes.some((id) => id === instance?.currentUser._id); //проверяем не является ли пользователь (id) элементом массива лайков данного поста
+    const instance = useContext(UserContext);
+    const liked = likes.some((id) => id === instance?.currentUser._id);
     const likesLength = `${likes.length}`;
     const commentsCount = `${comments.length}`;
     const commentActiv = (commentsCount == 0);
-    let navigate = useNavigate(); //хук для того чтобы при нажатии на карточку вылетало окно с постом именно этой карточки с данным айди
-  const handleClick = () => {
-    navigate('/postId');
-  };
+    let navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/postId');
+    };
 
 
     return (
@@ -65,8 +64,8 @@ const Card = ({ title,
                         <Link to={`/post/${_id}`}>
 
                             <button className={cn(" card_comment_ikon_none", { 'card_comment_ikon_activ': !commentActiv })}
-                            
-                            onClick={handleClick}>
+
+                                onClick={handleClick}>
                                 <Comment className="card_comment_ikon" />
                             </button>
                         </Link>

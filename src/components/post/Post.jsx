@@ -37,9 +37,8 @@ export const Post = ({
   const [showForm, setShowForm] = useState(false);
   const [isClicked, setClicked] = useState(isLiked);
 
-  const authorPost = author.name;// ввел переменную - взял значение объекта 'author',
-  // полученного в ответе сервера по ключу 'name'
-  let navigate = useNavigate(); //хук для того чтобы при нажатии на карточку вылетало окно с постом именно этой карточки с данным айди
+  const authorPost = author.name;
+  let navigate = useNavigate();
   const handleClick = () => {
     navigate('/');
   };
@@ -47,27 +46,24 @@ export const Post = ({
   const onLike = (e) => {
     onPostsLike(e);
     setClicked((state) => !state);
-
-
   };
-
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: 'onBlur' });
+
   const location = useLocation();
 
-
   useEffect(() => {
-    if (location.search.includes('name=dear')) {  // проверка элемента в массиве
+    if (location.search.includes('name=dear')) {
       navigate('/');
     }
   }, [location.search]);
 
   useEffect(() => {
-    api.getUsers().then((data) => setUsers(data)) // апи запрос на получение юзеров
+    api.getUsers().then((data) => setUsers(data))
   }, [])
 
   const getUser = (id) => {
@@ -76,13 +72,13 @@ export const Post = ({
     return user?.name ?? 'User'
 
   }
-  const options = { // компонент глобального объекта Data для преобразования даты, прилетающей из бэка в читабельный вид
+  const options = {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
   }
   const commentsRegister = register('text', {
-    required: {                                   // обязательное требование минимум 5 символов
+    required: {
       value: true,
       message: VALIDATE_CONFIG.requiredMessage,
     },
@@ -99,10 +95,7 @@ export const Post = ({
       <div className={s.container}>
         <div className={s.container_block}>
           <div className={s.container_page}>
-
-
             <h1 className={s.postTitle}>{title}</h1>
-
             <div >
               <img src={image} className={s.imgWrapper} alt='#' />
             </div>
@@ -110,12 +103,10 @@ export const Post = ({
               <span> ОПИСАНИЕ ПОСТА</span>
             </div>
             <div className={s.subtitle_text} dangerouslySetInnerHTML={textHTML}></div>
-
             <div className={s.container_description}>
               <div className={s.author}>
                 <div className={s.subtitle_container}>
                   <h3 className={s.subtitle}>АВТОР :</h3>
-
                   <h3 className={s.subtitle_text_line}>{authorPost}</h3>
                 </div >
                 <Link
@@ -129,7 +120,6 @@ export const Post = ({
                   <Pen />
                 </Link>
               </div>
-
               <div className={s.author}>
                 <div className={s.subtitle_container}>
                   <h3 className={s.subtitle}>СОЗДАН :</h3>
@@ -137,25 +127,17 @@ export const Post = ({
                 </div>
                 <span className={s.basket} onClick={deletePost}>
                   <Basket />
-
                 </span>
-
               </div>
-
               <div className={s.ratingInfo}>
-
                 <span className={s.ratingInfoCount}>{comments.length} комментариев </span>
                 <h1 className={s.heart_delete}>
-
                   <button className={cn(s.favorite, { [s.favoriteActiv]: isClicked })}
                     onClick={onLike}>
                     <Heart className={s.favoriteIkon} />
-
                   </button>
                 </h1>
-
               </div>
-
             </div>
           </div>
           <div className={s.buttonclick}>
@@ -165,7 +147,6 @@ export const Post = ({
           <div className={s.comments}>
             <div className={s.comments__control}>
               <span className={s.comments__name}>КОММЕНТАРИИ</span>
-
               {!showForm ? (
                 <button className={s.comments_btn_opasyty} onClick={() => setShowForm(true)}>
                   <div className={s.comments_containers}>
@@ -188,12 +169,9 @@ export const Post = ({
                     <p className='auth__error'>{errors?.textarea?.message}</p>
                   )}
                   <div className={s.form__btn}>
-
                     <button className={s.btn_form_comment} onClick={() => setShowForm(false)}>
                       Назад
                     </button>
-
-
                     <button className={s.btn_form_comment} type='submit' >
                       Отправить
                     </button>
@@ -214,14 +192,12 @@ export const Post = ({
                         onClick={() => deleteComments(e._id)}>
                         <Basket />
                       </span>}
-
                     </div>
                     <div className={s.text}>
                       <span> - </span> <span>{e.text}</span>
                     </div>
                   </div>
                 </div>
-
               ))}
           </div>
         </div>
