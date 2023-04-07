@@ -97,7 +97,7 @@ console.log('works');
 
 
   const addPost = (dataPostForm) => {
-    setCards([...cards, dataPostForm])
+    setCards([dataPostForm, ...cards ])
 
   }
   const location = useLocation();
