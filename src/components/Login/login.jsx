@@ -53,6 +53,9 @@ export const Login = () => {
     <>
       <Form handleFormSubmit={handleSubmit(sendData)} title='Вход'>
         <div className='auth__controls'>
+        <span className="back" onClick={() => navigate('/')}>
+          {"< Назад"}
+        </span>
           <input
             {...emailRegister}
             className='auth__input'

@@ -48,7 +48,7 @@ function App() {
   const [dataPostForm, setDataPostForm] = useState([]);
   const [show, setShow] = useState(true);
 
-
+console.log('works');
 
   const debounceSearchQuery = useDebounce(searchQuery, 500);
 
