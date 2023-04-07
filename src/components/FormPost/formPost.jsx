@@ -4,7 +4,7 @@ import api from '../utilites/api';
 import './index.css'
 import { useNavigate } from 'react-router-dom';
 
-export const FormPost = ({ addPost }) => {
+export const FormPost = ({ addPost, posts }) => {
   const [userFormPost, setUserFormPost] = useState(
     {
       image: '',
@@ -23,16 +23,25 @@ export const FormPost = ({ addPost }) => {
     setUserFormPost({ ...userFormPost, [e.target.name]: e.target.value })
   }
 
+
+  const checkCardLocal = (item) => {
+  
+    return (
+      !item.pictures.includes("default-image") &&
+      new Date(item.created_at) < new Date("2022-12-05T11:22:43.008Z")
+    );
+  };
+
   const hendleFormSubmit = async(e) => {
     e.preventDefault(); 
     await api.addPostForm(userFormPost).then((newPost) => {
-      addPost({ ...newPost });
+      addPost({...newPost});
        handleClick()
     });
-    console.log({hendleFormSubmit});
+    
    
   }
-  
+  console.log({addPost});
  
 
   return (
