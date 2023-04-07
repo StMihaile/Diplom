@@ -56,7 +56,7 @@ export const Profile = () => {
   return (
     <>
       <div className="profile">
-        <span className="back" onClick={() => navigate(-1)}>
+        <span className="back" onClick={() => navigate('/')}>
           {"< Назад"}
         </span>
         <h1 className="title">Мои данные</h1>

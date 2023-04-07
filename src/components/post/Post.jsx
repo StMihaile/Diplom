@@ -12,7 +12,6 @@ import { useState } from 'react';
 import { VALIDATE_CONFIG } from '../../constants/constants';
 import { ReactComponent as Basket } from '../assets/basket.svg';
 import { ReactComponent as Pen } from '../assets/pen.svg';
-import { Avatar } from '../profile/avatar';
 export const Post = ({
   image,
   title,
