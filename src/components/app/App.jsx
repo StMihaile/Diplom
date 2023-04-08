@@ -19,6 +19,7 @@ import { ResetPass } from '../ResetPass/resetPass';
 import { ModalPost } from '../Form/Modal/modalPost';
 import { Profile } from '../profile/profile';
 import { FaqPage } from '../page/faq/faq';
+import {NoMatchFound} from '../page/NoMatchFound/noMatchFound'
 
 
 
@@ -183,6 +184,7 @@ setCards(cards.filter(card=>card._id !==cardId));
                     </Modal>
                   }>
                   </Route>
+                  <Route path='*' element={<NoMatchFound/>}></Route>
                 </Routes>
                 <Footer setActiveModal={setActiveModal}/>
 
