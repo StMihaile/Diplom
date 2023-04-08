@@ -23,15 +23,6 @@ export const FormPost = ({ addPost, posts }) => {
     setUserFormPost({ ...userFormPost, [e.target.name]: e.target.value })
   }
 
-
-  const checkCardLocal = (item) => {
-  
-    return (
-      !item.pictures.includes("default-image") &&
-      new Date(item.created_at) < new Date("2022-12-05T11:22:43.008Z")
-    );
-  };
-
   const hendleFormSubmit = async(e) => {
     e.preventDefault(); 
     await api.addPostForm(userFormPost).then((newPost) => {

@@ -104,6 +104,10 @@ console.log('works');
   const backgroundLocation = location.state?.backgroundLocation;
   const initialPath = location.state?.location;
 
+ const deletePost = (cardId)=>{
+setCards(cards.filter(card=>card._id !==cardId));
+  }
+
   return (
     <>
       <CardContext.Provider value={{ cards: cards, setActiveModal: setActiveModal, setShow: setShow, headlyPostLike: headlyPostLike }}>
@@ -143,7 +147,7 @@ console.log('works');
                     <CollectionPage cards={cards} currentUser={currentUser} headlyPostLike={headlyPostLike} />
                   }
                   > </Route>
-                  <Route path='post/:postId' element={<PostPage currentUser={currentUser} />}></Route>
+                  <Route path='post/:postId' element={<PostPage currentUser={currentUser} onDeletePost={deletePost} />}></Route>
 
                   <Route path='/edit-post/:postId' element={
                     <Modal activeModal={activeModal} setActiveModal={setActiveModal}>

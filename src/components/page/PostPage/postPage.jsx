@@ -7,8 +7,10 @@ import { Post } from "../../post/Post";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from 'react';
 import { UserContext } from '../../../context/userContext';
-export const PostPage = () => {
 
+
+export const PostPage = ({onDeletePost}) => {
+  // const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState([null]);
   const [isloading, setIsloading] = useState([false]);
   const [posts, setPost] = useState([null]);
@@ -51,9 +53,13 @@ export const PostPage = () => {
     if (window.confirm('Вы действительно хотите удалить пост ?'))
       try {
         const result = await api.deletePostFormUser(posts._id, id);
-        setPost({ ...result });
-        handleClick()
-        window.location.reload();
+       onDeletePost(posts._id)
+        setPost(result );
+         handleClick()
+         
+        
+       
+        
       } catch (error) {
       }
   }
