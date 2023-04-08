@@ -23,8 +23,6 @@ export const FormPost = ({ addPost, posts }) => {
     setUserFormPost({ ...userFormPost, [e.target.name]: e.target.value })
   }
 
-
-
   const hendleFormSubmit = async(e) => {
     e.preventDefault(); 
     await api.addPostForm(userFormPost).then((newPost) => {
