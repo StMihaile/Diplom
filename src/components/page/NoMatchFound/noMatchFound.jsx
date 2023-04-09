@@ -1,3 +1,4 @@
+import './index.css'
 export const NoMatchFound = () => {
-  return <div>Не туда попали</div>;
+  return <div className='found'>Не туда попали</div>;
 };
